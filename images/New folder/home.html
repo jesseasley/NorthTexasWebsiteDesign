@@ -1,0 +1,766 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html;charset=ISO-8859-8">
+
+	<title>North Texas Website Design</title>
+    <link rel="stylesheet" type="text/css" href="css/style.css" />
+	<script type="text/javascript" src="http://code.jquery.com/jquery-1.8.1.min.js"></script>
+
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+    <meta name="robots" content="index,follow" />
+	<meta name="keywords" content="website, design, consulting, it, web design, technology, application, websites, applications, designs" />
+    <script type="text/javascript">
+        var monthNames = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+        var d = new Date();
+        var transitionSpeed = 500;
+        $(document).ready(function () {
+            $("#monthName").html(monthNames[d.getMonth()]);
+            $("#monthName1").html(monthNames[d.getMonth()]);
+            //$("#btnHome").append("<img src=images/home.jpg width=110 height=110  />");
+            //$("#btnServices").append("<img src=images/services.jpg width=110 height=110  />");
+            //$("#btnClients").append("<img src=images/clients.jpg width=110 height=110  />");
+            //$("#btnContactUs").append("<img src=images/contactus.jpg width=110 height=110  />");
+            $("#placeholder").hide();
+            var page = "home.php";
+            if (location.toString().indexOf("#Home") > 0)
+                page ="homepage";
+            if (location.toString().indexOf("#Services") > 0)
+                page = "servicespage";
+            if (location.toString().indexOf("#Clients") > 0)
+                page = "clientspage";
+            if (location.toString().indexOf("#ContactUs") > 0)
+                page = "contactuspage";
+            if (location.toString().indexOf("#AdvancedServices") > 0)
+                page = "advancedservicespage";
+            show(page);
+        });
+        function show(screen) {
+            var scr = "noscroll";
+            var transType = 2;
+            if ((screen == "clientspage") || (screen == "advancedservicespage"))
+                scr = "scroll";
+            if ((screen == "thankspage") || (screen == "advancedservicespage"))
+                transType = 2;
+            if (transType == 1)
+                $("#placeholder").hide(
+                    transitionSpeed,
+                    function () {
+                        $("#placeholder").html($("#" + screen).html());
+                        $("#placeholder").attr("class", "maincontent show " + scr);
+                        $("#placeholder").show(transitionSpeed);
+                    }
+                );
+            if (transType == 2)
+                $("#placeholder").slideUp(transitionSpeed, function () {
+                    $("#placeholder").html($("#" + screen).html());
+                    $("#placeholder").attr("class", "maincontent show " + scr);
+                    $("#placeholder").slideDown(transitionSpeed);
+                });
+            if (transType == 3)
+                $("#placeholder").fadeOut(transitionSpeed, function () {
+                    $("#placeholder").html($("#" + screen).html());
+                    $("#placeholder").attr("class", "maincontent show " + scr);
+                    $("#placeholder").fadeIn(transitionSpeed);
+                });
+            return true;
+            var html = $("#" + screen).html();
+            var dir = "TOP";
+            if (screen == "homepage")
+                dir = "TOP";
+            if (screen == "servicespage")
+                dir = "LEFT";
+            if (screen == "clientspage")
+                dir = "BOTTOM";
+            if (screen == "contactuspage")
+                dir = "RIGHT";
+            $("#placeholder").flippy({ 
+                content: html, 
+                direction: dir, 
+                duration: "750"
+            });
+            $("#placeholder").attr("class", "maincontent show");
+            return true;
+        }
+        function isEmail(email) {
+            var regex = /^([a-zA-Z0-9_\.\-\+])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/;
+            return regex.test(email);
+        }
+        function validateFields() {
+            var requiredMissing = "";
+            var validEmail = "";
+            var msg = "";
+            if ($("#nameText").val() == "") {
+                requiredMissing = "Name";
+            }
+            if ($("#emailText").val() == "") {
+                if (requiredMissing == "") {
+                    requiredMissing = "Email";
+                }
+                else {
+                    requiredMissing += ", Email";
+                }
+
+            }
+            if ($("#phoneText").val() == "") {
+                if (requiredMissing == "") {
+                    requiredMissing = "Phone";
+                }
+                else {
+                    requiredMissing += " and Phone";
+                }
+            }
+            if (requiredMissing != "")
+                msg = "Missing required fields: " + requiredMissing;
+            if (!(isEmail($("#emailText").val()))){
+                validEmail = "Please check the format of the email address.";
+                msg += "\n" + validEmail;
+            }
+            if (msg == "") {
+                return true;
+            }
+            else {
+                alert(msg);
+                return false;
+            }
+        }
+        function sendMail() {
+            if (validateFields()){
+                $.ajax({
+                    type: "POST",
+                    url: "email.php",
+                    data: "name=" + $("#nameText").val() +
+                            "&email=" + $("#emailText").val() +
+                            "&phone=" + $("#phoneText").val() +
+                            "&subject=" + $("#subjectText").val() +
+                            "&body=" + $("#bodyTextArea").val(),
+                    success: function (data) {
+                        show("thankspage");
+                        if (data == "success")
+                            $("#emailResults").html("Thanks for contacting us.<br /><br />Someone will respond to your request shortly.");
+                        else if (data == "error")
+                            $("#emailResults").html("Something went wrong and we were unable to send your mail.<br /><br />Please try again later.");
+                        else
+                            $("#emailResults").html(data);
+                    }
+                });
+            }            
+        }
+    </script>
+</head>
+
+<body topmargin="0" bottommargin="0" leftmargin="0" rightmargin="0">
+		<div style="position: absolute; width: 100%; height: 100px; z-index: 2; left: 0; top: 35" id="layer2">
+		<center>
+		<table border="0" width="919" cellspacing="0" cellpadding="0" bgcolor="#B4C1C9">
+			<tr>
+				<td width="919px" background="images/captiongradient.jpg">
+					<table width="100%" border"1" cellpadding="0" cellspacing="0">
+						<tr>
+							<td onclick="show('homepage');" width="132px" height="124px" background="images/logo.jpg"></td>
+							<td width="358px"></td>
+							<td width="408px">
+                                <table>
+                                    <tr>
+                                        <td align="center" valign="bottom" class="text">
+                                            <img onclick="show('homepage');" alt="Company name" src="images/companyname.jpg" width="408" height="46" />
+							                <br />
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td align="right" class="text">
+							                Phone: (972) 284-9403<br />
+							                Email: <a class="text" style="text-decoration:none" href="#ContactUs" onclick="show('contactuspage');"><span class="text">Send us an email</span></a><br /><br />
+                                        </td>
+                                    </tr>
+                                </table>
+							</td>
+							<td width="21px"></td>
+						</tr>
+					</table>
+				</td>
+			</tr>
+			<tr>
+				<td valign="top">
+				
+					<table border="0" cellpadding="0" cellspacing="0" width="100%" bgcolor="#96A4C5">
+						<tr>
+							<td valign="top" width="150px">
+                                <center>
+                                    <table border="0" cellpadding="0" cellspacing="0">
+                                        <tr><td height="14" /></tr>
+                                        <tr>
+                                            <td><a href="#Home" onclick="show('homepage');"><img src=images/home.jpg width=120 height=120 /></a></td>
+                                        </tr>
+                                        <tr>
+                                            <td><a href="#Services" onclick="show('servicespage');"><img src=images/services.jpg width=120 height=120 /></a></td>
+                                        </tr>
+                                        <tr>
+                                            <td><a href="#Clients" onclick="show('clientspage');"><img src=images/clients.jpg width=120 height=120 /></a></td>
+                                        </tr>
+                                        <tr>
+                                            <td><a href="#ContactUs" onclick="show('contactuspage');"><img src=images/contactus.jpg width=120 height=120 /></a></td>
+                                        </tr>
+                                    </table>
+                                </center>
+							</td>
+							<td>
+                                <br />
+                                <center>
+								<div id="placeholder" class="maincontent show noscroll">
+								    Do you have a small business in need of a web presence? 
+								    <br /><br />
+								    We specialize in catering to small businesses, because we're one too. <br /><br />
+								    We know exactly what you need from IDX to SEO.  <br /><br />
+								    Among the many reasons our customers require custom web development are;
+								    <ul>
+									    <li>Single Page Customization</li>
+									    <li>Web Site Enhancements</li>
+									    <li>Performance Improvements</li>
+									    <li>Security Audits</li>
+									    <li>Custom Designs</li>
+									    <li>Data Driven Sites</li>
+									    <li>Adding Workflow Features</li>
+									    <li>Platform Migrations</li>
+								    </ul>
+								    <ul>
+									    <li>Personal Sites</li>
+									    <li>Gaming Sites</li>
+									    <li>Departmental Sites</li>
+									    <li>Small Business Sites</li>
+									    <li>e-Commerce B2B Sites</li>
+								    </ul>
+								    Whether you need help with smaller one-page sites or with 
+								    complex multi-tier, database driven, e-Commerce 
+								    environments, we have the experience and expertise to help.
+								    <br /><br />
+							        Call us for a FREE estimate.
+                                    <br />
+                                    Take advantage of sales pricing on designs running through <span id="monthName1"></span>!
+                                </div>
+								<div id="homepage" class="maincontent hidden">
+								    Do you have a small business in need of a web presence? 
+								    <br /><br />
+								    We specialize in catering to small businesses, because we're one too. <br /><br />
+								    We know exactly what you need from IDX to SEO.  <br /><br />
+								    Among the many reasons our customers require custom web development are;
+								    <ul>
+									    <li>Single Page Customization</li>
+									    <li>Web Site Enhancements</li>
+									    <li>Performance Improvements</li>
+									    <li>Security Audits</li>
+									    <li>Custom Designs</li>
+									    <li>Data Driven Sites</li>
+									    <li>Adding Workflow Features</li>
+									    <li>Platform Migrations</li>
+								    </ul>
+								    <ul>
+									    <li>Personal Sites</li>
+									    <li>Gaming Sites</li>
+									    <li>Departmental Sites</li>
+									    <li>Small Business Sites</li>
+									    <li>e-Commerce B2B Sites</li>
+								    </ul>
+								    Whether you need help with smaller one-page sites or with 
+								    complex multi-tier, database driven, e-Commerce 
+								    environments, we have the experience and expertise to help.
+								    <br /><br />
+								    Call us for a FREE estimate.
+                                    <br />
+                                    Take advantage of sales pricing on designs running through <span id="monthName"></span>!
+                                </div>
+								<div id="servicespage" class="maincontent hidden">
+                                    Your typical brochure-ware is our least expensive option.
+
+                                    This includes;
+                                    </p>
+                                    <ul>
+	                                    <li>Making sure your domain name is properly connected to your hosting 
+	                                    account.</li>
+	                                    <li>Working with you to make sure we have a site design that works for you.</li>
+	                                    <li>Design of a template. Template based sites are easier to maintain.</li>
+	                                    <li>CSS </li>
+	                                    <li>Providing the correct directory structure.</li>
+	                                    <li>Development of the site, based on the template.</li>
+	                                    <li>BIO page.</li>
+	                                    <li>"Contact us" page.</li>
+	                                    <li>4-5 pages total.</li>
+	                                    <li>Posting all content to the final domain and testing all links.</li>
+	                                    <li>Walking you through how to upload modifications, so you can take over 
+	                                    when I'm done.</li>
+	                                    <li>Initial setup of all emails.</li>
+	                                    <li>Note: To look professional, if your domain name is www.YourDomain.com, your email should be 
+	                                    <a href="mailto:YourName@YourDomain.com">YourName@YourDomain.com</a>.  
+
+                                    </li>
+                                    </ul>
+                                    <p>If your web development needs are more complicated that the typical 
+                                    brochure-ware site, we can help there too.&nbsp; 
+                                    <a href="#AdvancedServices" onclick="show('advancedservicespage');">
+                                    Click here</a> to see the advanced services we offer.</p>
+                                    <p>All we need to get started is a signed Professional Services Agreement.&nbsp; 
+                                    <br />
+                                    To download this in PDF format,
+                                    <a href="Professional%20Services%20Agreement.pdf" target="_blank">click here</a>.</p>
+                                </div>
+								<div id="thankspage" class="maincontent hidden">
+                                    <center>
+                                        <div id="emailResults" />
+                                    </center>
+                                </div>
+								<div id="clientspage" class="maincontent hidden">
+                                    <center>
+                                    <a href="http://www.princessforonedaymovie.com" target="_blank">PrincessForOneDayMovie.com</a><br />
+                                    <img border="0" src="images/princessforoneday.jpg" width="200" height="94" />
+                                    <br />
+                                    <hr>
+                                    <a href="http://www.altamiraconcrete.com" target="_blank">AltamiraConcrete.com</a><br />
+                                    <img border="0" src="images/AltamiraConcrete.jpg" width="200" height="207" />
+                                    <br />
+                                    <hr>
+                                    <a href="http://www.Bartendertainment.net" target="_blank">Bartendertainment.net</a><br />
+                                    <img border="0" src="images/bartendertainment.jpg" width="200" height="127" />
+                                    <br />
+                                    <hr>
+                                    <a href="http://www.grenterpriseservices.com" target="_blank">GREnterpriseServices.com</a><br />
+                                    <img border="0" src="images/grenterprise.jpg" width="200" height="115" />
+                                    <br />
+                                    <hr />
+                                    <a href="http://www.homesforsaleinhighlandvillage.com/" target="_blank">HomesForSaleInHighlandVillage.com</a><br />
+                                    <img border="0" src="images/homesforsaleinhighlandvillage.jpg" width="200" height="174" /><br />
+                                    <br />
+                                    <hr />
+                                    <a href="http://www.homesforsaleinlewisville.com/" target="_blank">HomesForSaleInLewisville.com</a><br />
+                                    <img border="0" src="images/homesforsaleinlewisville.jpg" width="200" height="206" /><br />
+                                    <br />
+                                    <hr />
+                                    <a href="http://www.texasexpressrealty.com/" target="_blank">TexasExpressRealty.com</a><br />
+                                    <img border="0" src="images/texasexpressrealty.jpg" width="199" height="212"><br />
+                                    <span style="width: 450; text-align:left">
+                                    Thanks for helping me design my new real estate web site.  
+                                    I was paying $500 per year for a template web site that I didnt own, and had no control over.  
+                                    You bent over backwards to make me happy & made all the changes I requested.  
+                                    Im thankful  that we crossed paths, and hope to do more business with you in the future.   
+                                    <br /><br />Thanks, <br />David Cook  Texas Express Realty</span>
+                                    <br />
+                                    <hr />
+                                    Serena Mar (Century 21 Flower Mound Realtor)<br />
+                                    Notebook repair.
+                                    <br />
+                                    <hr />
+                                    <a href="http://www.waterfordparkestates.com/" target="_blank">WaterfordParkEstates.com</a><br />
+                                    <img border="0" src="images/waterfordparkestates.jpg" width="200" height="111" /><br />
+                                    <hr />
+                                    <a href="http://www.muralsystemsinc.com/" target="_blank">MuralSystemsInc.com</a><br />
+                                    <img border="0" src="images/muralsystems.jpg" width="200" height="111" /><br />
+                                    <span style="width: 450; text-align:left">
+                                    I liked the way you clearly defined things upfront, 
+                                    did the changes requested and made the whole process easy and quick to get the website up. 
+                                    Also your effort to talk to godaddy to leverage the pricing was a great gesture too.
+                                    <br /><br />Thank you
+                                    <br />Murali</span>
+ 
+                                    <br />
+                                    <hr />
+                                    <a href="http://www.search4realtor.net/search4realtor.php?domainname=consultingad" target="_blank">Search4Realtor.net</a><br />
+                                    <img border="0" src="images/search4realtor.jpg" width="200" height="129" />
+                                    <br />
+                                    <hr />
+                                    <a target="_blank" href="http://www.easley-realty.com">EasleyRealty.com</a><br />
+                                    <img border="0" src="images/easleyrealty.jpg" width="200" height="117" /><br />
+                                    <hr />
+                                    <a href="http://www.crystaladvantage.com" target="_blank">CrystalAdvantage.com</a><br />
+                                    <img border="0" src="images/Crystal%20Advantage.jpg" width="200" height="157" /><br />
+                                    <hr />
+                                    <a href="http://loans.citifinancialauto.com/" target="_blank">CitiFinancial Auto</a><br />
+                                    &nbsp;<img border="0" src="images/Citi%20Financial.jpg" width="200" height="137" /><br />
+                                    <hr />
+                                    <a href="http://www.arcadiafinancial.com" target="_blank">ArcadiaFinancial.com</a><br />
+                                    &nbsp;<img border="0" src="images/Arcadia%20Financial.jpg" width="200" height="130" /><br />
+                                    <hr />
+                                    <a href="http://www.drivehome.com" target="_blank">DriveHome.com</a>
+                                    <br />
+                                    &nbsp;<img border="0" src="images/DriveHome.jpg" width="200" height="161">
+                                    </center>
+                                </div>
+								<div id="contactuspage" class="maincontent hidden">
+		                            <table border="0" cellspacing="0" cellpadding="0" class="darktext">
+			                            <tr>
+				                            <td colspan="2" align="center">
+					                            Please enter your comments below and press Send.
+                                                <br /><br />
+				                            </td>
+			                            </tr>
+			                            <tr>
+				                            <td width="1" align="right">Name:</td>
+				                            <td>
+				                                <input type="text" id="nameText" class="darktext" size="85" placeholder="Tell us your name" value="" />
+                                            </td>
+			                            </tr>
+			                            <tr>
+				                            <td width="1" align="right">Email:</td>
+				                            <td>
+				                                <input type="text" id="emailText" class="darktext" size="85" placeholder="Enter an email address so we may respond to you" value="" />
+                                            </td>
+			                            </tr>
+			                            <tr>
+				                            <td width="1" align="right">Phone:</td>
+				                            <td>
+				                                <input type="text" id="phoneText" class="darktext" size="85" placeholder="A contact phone number allows us to call you, if you prefer" value="" />
+                                            </td>
+			                            </tr>
+			                            <tr>
+				                            <td width="1" align="right">Subject:</td>
+				                            <td>
+				                                <input type="text" id="subjectText" class="darktext" size="85" placeholder="You can specify a subject line for the email" value="" />
+                                            </td>
+			                            </tr>
+			                            <tr>
+				                            <td width="1" align="right" valign="top" >Message:</td>
+				                            <td valign="top">
+				                                <textarea rows="12" id="bodyTextArea" cols="86" class="darktext" placeholder="Tell us what's on your mind"></textarea>
+                                            </td>
+			                            </tr>
+			                            <tr>
+				                            <td>&nbsp;</td>
+			                            </tr>
+			                            <tr>
+				                            <td colspan="2" align="right">
+				                                <input type="hidden" value="Send" name="sendButton" />
+				                                <input type="submit" value="Send" onclick="sendMail();">
+				                            </td>
+			                            </tr>
+		                            </table>
+                                </div>
+								<div id="advancedservicespage" class="maincontentmobile hidden">
+                                    <table border="0" width="100%" cellspacing="0" cellpadding="0" class="darktext">
+                                        <tr><td colspan="2" align="center"><h3>Advanced Services We Offer</h3></td></tr>
+	                                    <tr height="10"><td colspan="2"></td></tr>
+	                                    <tr>
+		                                    <td colspan="2" width="900" >
+			                                    Email Services 
+		                                    </td>
+	                                    </tr>
+	                                    <tr>
+		                                    <td width="450" >
+			                                    <ul>
+				                                    <li>Mail Server Solutions</li>
+				                                    <li>Mailing List Management</li>
+				                                    <li>Email Spam Filtering</li>
+			                                    </ul>
+		                                    </td>
+		                                    <td width="450" >
+			                                    <ul>
+				                                    <li>Email Virus Filtering</li>
+				                                    <li>Email Configuration</li>
+				                                    <li>User Setup/Support</li>
+			                                    </ul>
+		                                    </td>
+	                                    </tr>
+	                                    <tr>
+		                                    <td colspan="2">
+			                                    Database Services
+		                                    </td>
+	                                    </tr>
+	                                    <tr>
+		                                    <td>
+			                                    <ul>
+				                                    <li>Database Design</li>
+				                                    <li>Database Administration </li>
+				                                    <li>Database Tuning</li>
+			                                    </ul>
+		                                    </td>
+		                                    <td>
+			                                    <ul>
+				                                    <li>Database Backups</li>
+				                                    <li>Database Restores</li>
+				                                    <li>Database Migrations</li>
+			                                    </ul>
+		                                    </td>
+	                                    </tr>
+	                                    <tr>
+		                                    <td colspan="2">
+			                                    Hardware Services 
+		                                    </td>
+	                                    </tr>
+	                                    <tr>
+		                                    <td>
+			                                    <ul>
+				                                    <li>Hardware Services </li>
+				                                    <li>Custom Built Computers</li>
+				                                    <li>Custom Built Servers</li>
+				                                    <li>Laptop Support &amp; Service</li>
+			                                    </ul>
+		                                    </td>
+		                                    <td valign="top">
+			                                    <ul>
+				                                    <li>System Upgrades</li>
+				                                    <li>Hard Drive Upgrades</li>
+				                                    <li>Memory Upgrades </li>
+			                                    </ul>
+		                                    </td>
+	                                    </tr>
+	                                    <tr>
+		                                    <td colspan="2">
+			                                    Data Backup Services 
+		                                    </td>
+	                                    </tr>
+	                                    <tr>
+		                                    <td>
+			                                    <ul>
+				                                    <li>Automated Backups</li>
+				                                    <li>Offsite Data Storage</li>
+				                                    <li>Storage Area Networks</li>
+				                                    <li>Disaster Recovery Plan</li>
+				                                    <li>Data Backup Restoration</li>
+			                                    </ul>
+		                                    </td>
+		                                    <td valign="top">
+			                                    <ul>
+				                                    <li>NAS</li>
+				                                    <li>Continuity Planning</li>
+				                                    <li>Data Redundancy</li>
+				                                    <li>RAID Storage</li>
+			                                    </ul>
+		                                    </td>
+	                                    </tr>
+	                                    <tr>
+		                                    <td colspan="2">
+			                                    Security Services  
+		                                    </td>
+	                                    </tr>
+	                                    <tr>
+		                                    <td>
+                                                <ul>
+                                                    <li>Hotfix/Patch Installations</li>
+                                                    <li>Internet Security</li>
+                                                    <li>Internal Network Security</li>
+                                                    <li>Anti-Virus Protection</li>
+                                                    <li>Intrusion Detection </li>
+                                                    <li>Security Services</li>
+                                                    <li>Network Monitoring</li>
+                                                </ul>
+		                                    </td>
+		                                    <td valign="top">
+			                                    <ul>
+                                                    <li>Penetration Testing</li>
+                                                    <li>Acceptable Use</li>
+                                                    <li>Firewall Security</li>
+                                                    <li>Spyware/Adware</li>
+                                                    <li>Network Audits</li>
+                                                    <li>Integrity Checks</li>
+                                                </ul>
+		                                    </td>
+	                                    </tr>
+	                                    <tr>
+		                                    <td colspan=2>
+			                                    Server Services  
+		                                    </td>
+	                                    </tr>
+	                                    <tr>
+		                                    <td>
+			                                    <ul>
+                                                    <li>Microsoft IIS Server</li>
+                                                    <li>Microsoft SQL Server</li>
+                                                    <li>Application Server</li>
+                                                    <li>Microsoft Exchange</li>
+                                                    <li>Small Business Server</li>
+                                                    <li>Server Services </li>
+                                                    <li>Windows 2000 Server</li>
+                                                    <li>Windows NT Server</li>
+                                                </ul>
+		                                    </td>
+		                                    <td>
+			                                    <ul>
+                                                    <li>DNS Server</li>
+                                                    <li>File and Print Server</li>
+                                                    <li>Linux Server</li>
+                                                    <li>RAS/VPN</li>
+                                                    <li>Novel Server</li>
+                                                    <li>IBM Server</li>
+                                                    <li>Web Server</li>
+                                                    <li>Terminal Server</li>
+                                                </ul>
+		                                    </td>
+	                                    </tr>
+	                                    <tr>
+		                                    <td colspan=2>
+			                                    Desktop Computer Services 
+		                                    </td>
+	                                    </tr>
+	                                    <tr>
+		                                    <td>
+			                                    <ul>
+                                                    <li>Software Install/Config</li>
+                                                    <li>Virus/Spyware Removal</li>
+                                                    <li>PC Troubleshooting</li>
+                                                    <li>OS Installation/Rebuild</li>
+                                                    <li>New Computer Set Up</li>
+                                                    <li>File and Printer Sharing </li>
+                                                    <li>Email/Internet Set Up</li>
+                                                    <li>PC Diagnostic Testing</li>
+                                                    <li>Remote Support</li>
+                                                </ul>
+		                                    </td>
+		                                    <td>
+			                                    <ul>
+                                                    <li>Computer Upgrades</li>
+                                                    <li>Desktop Configuration</li>
+                                                    <li>Routine Maintenance </li>
+                                                    <li>General Tech Support</li>
+                                                    <li>New User Set Up</li>
+                                                    <li>New Peripheral Setup</li>
+                                                    <li>User Training</li>
+                                                    <li>Performance Tune-Up </li>
+                                                    <li>New Printer Set Up</li>
+                                                </ul>
+		                                    </td>
+	                                    </tr>
+	                                    <tr>
+		                                    <td colspan=2>
+			                                    Network &amp; Internet Services 
+		                                    </td>
+	                                    </tr>
+	                                    <tr>
+		                                    <td>
+			                                    <ul>
+                                                    <li>Network Configuration</li>
+                                                    <li>Windows Active Directory</li>
+                                                    <li>Wireless Networks</li>
+                                                    <li>Wiring &amp; Cabling</li>
+                                                    <li>Patch Panel Installs </li>
+                                                    <li>Telecommunications</li>
+                                                    <li>Log-on Scripts</li>
+                                                    <li>Network Relocation</li>
+                                                    <li>UPS Backup Power</li>
+                                                    <li>Video Surveillance</li>
+                                                </ul>
+		                                    </td>
+		                                    <td>
+			                                    <ul>
+                                                    <li>Routers &amp; Switches</li>
+                                                    <li>Troubleshooting</li>
+                                                    <li>VoIP Solutions</li>
+                                                    <li>LAN / WAN</li>
+                                                    <li>Architecture Design </li>
+                                                    <li>T1, DSL, Frame Relay</li>
+                                                    <li>Maintenance</li>
+                                                    <li>System Upgrades</li>
+                                                    <li>Internet Connectivity</li>
+                                                    <li>Layer 3 Switching</li>
+                                                </ul>
+			                                </td>
+	                                    </tr>
+	                                    <tr>
+		                                    <td colspan=2>
+			                                    Web &amp; eBusiness Services 
+		                                    </td>
+	                                    </tr>
+	                                    <tr>
+		                                    <td>
+			                                    <ul>
+                                                    <li>Website Design</li>
+                                                    <li>Website Hosting</li>
+                                                    <li>Email Hosting</li>
+                                                    <li>DNS Hosting</li>
+                                                    <li>Domain Registration</li>
+                                                    <li>Website Promotion</li>
+                                                    <li>Internet Advertising</li>
+                                                    <li>Usability Analysis</li>
+                                                    <li>Customer Surveys </li>
+                                                    <li>SSL Certificates </li>
+                                                    <li>PHP, ASP, XML, JAVA</li>
+                                                </ul>
+		                                    </td>
+		                                    <td valign="top">
+			                                    <ul>
+                                                    <li>Website Support</li>
+                                                    <li>Content Development </li>
+                                                    <li>Database Integration</li>
+                                                    <li>SEO Marketing</li>
+                                                    <li>eBusiness Strategy </li>
+                                                    <li>Shopping Carts</li>
+                                                    <li>Flash Design</li>
+                                                    <li>Custom Websites</li>
+                                                    <li>Intranet Design</li>
+                                                    <li>Content Management</li>
+                                                </ul>
+		                                    </td>
+	                                    </tr>
+	                                    <tr>
+		                                    <td colspan="2">
+			                                    Other IT Services
+		                                    </td>
+	                                    </tr>
+	                                    <tr>
+		                                    <td>
+			                                    <ul>
+                                                    <li>Multi-Tiered Environments</li>
+                                                    <li>IT Consultants</li>
+                                                    <li>Project Outsourcing</li>
+                                                    <li>IT Compliance Audits </li>
+                                                    <li>Software Licensing</li>
+                                                    <li>Network Diagrams</li>
+                                                    <li>Network Architecture</li>
+                                                    <li>Infrastructure Analysis</li>
+                                                    <li>Network Redesign </li>
+                                                    <li>Data Center Solutions</li>
+                                                    <li>Legacy System Support </li>
+                                                    <li>Hardware Procurement </li>
+                                                    <li>Technical Advice</li>
+                                                    <li>Platform Specialists </li>
+                                                </ul>
+		                                    </td>
+		                                    <td valign="top">
+			                                    <ul>
+                                                    <li>IT Asset Management </li>
+                                                    <li>Advanced Config</li>
+                                                    <li>Fault Tolerance</li>
+                                                    <li>Network Performance</li>
+                                                    <li>Software Development</li>
+                                                    <li>Vendor Management</li>
+                                                    <li>Contract Negotiations</li>
+                                                    <li>IT Policies</li>
+                                                    <li>Office Relocations </li>
+                                                    <li>Tech Support</li>
+                                                    <li>Data Migrations</li>
+                                                    <li>Troubleshooting </li>
+                                                    <li>Specialized Training</li>
+                                                </ul>
+		                                    </td>
+	                                    </tr>
+                                    </table>
+                                </div>
+                                </center>
+							</td>
+						</tr>
+						<tr>
+							<td colspan="3">
+                                <br />
+                                <center>
+								    <facebook>
+									    <div id="fb-root"></div>
+									    <nobr><script src="http://connect.facebook.net/en_US/all.js#appId=261244953897287&amp;xfbml=1"></script>
+									    <fb:like href="http://www.jesseasley.com" layout="recommend" send="false" show_faces="false" font=""></fb:like></nobr>
+								    </facebook>
+								    <linked_in>
+									    <script type="text/javascript" src="http://platform.linkedin.com/in.js"></script>  
+									    <script type="in/share" data-counter="right" data-url="http://www.jesseasley.com"></script>
+								    </linked_in>
+                                </center>
+							</td>
+						</tr>
+					</table>
+				</td>
+			</tr>
+		</table>
+		</center>
+	</div>
+	
+</body>
+
+</html>
+

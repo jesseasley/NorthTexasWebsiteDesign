@@ -1,0 +1,54 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Floating Labels</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"
+            integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+            crossorigin="anonymous"></script>
+    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script>
+    </script>
+    <style>
+        .form-group {
+            position: relative;
+            margin-bottom: 1.5rem;
+        }
+
+        .form-control-placeholder {
+            position: absolute;
+            top: 0;
+            padding: 7px 0 0 13px;
+            transition: all 200ms;
+            opacity: 0.5;
+        }
+
+        .form-control:focus + .form-control-placeholder,
+        .form-control:valid + .form-control-placeholder {
+            font-size: 75%;
+            transform: translate3d(0, -100%, 0);
+            opacity: 1;
+        }
+    </style>
+</head>
+<body>
+    <div class="panel panel-default">
+        <div class="panel-body">
+            <div class="form-group">
+                <input type="text" id="nameText" class="form-control" value="" required />
+                <label class="form-control-placeholder" for="nameText">Name</label>
+            </div>
+            <div class="form-group">
+                <input type="text" id="emailText" class="form-control" value="" required />
+                <label class="form-control-placeholder" for="emailText">Email</label>
+            </div>
+            <div class="form-group">
+                <input type="text" id="phoneText" class="form-control" value="" required />
+                <label class="form-control-placeholder" for="phoneText">Phone</label>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

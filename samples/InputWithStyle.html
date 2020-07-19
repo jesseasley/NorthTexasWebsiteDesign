@@ -1,0 +1,55 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Input with Style</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <style>
+    </style>
+    <script>
+        $(document).ready(function () {
+        });
+        function myfocus(x, target) {
+            //$("#" + target).slideUp("fast", function(){
+                $("#" + target).html($(x).attr("placeholder"));
+                $(x).attr("placeholder", "");
+            //    $("#" + target).slideDown("slow");
+            //})
+        }
+        function myblur(x, target) {
+            $(x).attr("placeholder", $("#" + target).html());
+            $("#" + target).html("");
+        }
+    </script>
+</head>
+<body>
+    <div class="container">
+        <br />
+        <div class="well">
+            <div id="parent">
+                <div style="height:20px;text-decoration-color:dimgray">
+                    <div id="lbl" ></div>
+                </div>
+                <input id="tTest" type="text" class='form-control' placeholder="Enter your name" 
+                       style="" onfocus="myfocus(this, 'lbl');" onblur="myblur(this, 'lbl');" />
+            </div>
+            <br />
+            <div id="parent2">
+                <div id="lbl2" style="height:20px"></div>
+                <input id="tTest2" type="text" class='form-control' placeholder="Enter your address"
+                       style="" onfocus="myfocus(this, 'lbl2');" onblur="myblur(this, 'lbl2');" />
+            </div>
+            <br />
+            <div id="parent3">
+                <div id="lbl3" style="height:20px"></div>
+                <input id="tTest3" type="text" class='form-control' placeholder="Enter your phone number"
+                       style="" onfocus="myfocus(this, 'lbl3');" onblur="myblur(this, 'lbl3');" />
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>

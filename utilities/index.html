@@ -1,0 +1,53 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Utilities</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="https://code.jquery.com/ui/1.11.1/jquery-ui.js"></script>
+    <link rel="stylesheet" href="https://code.jquery.com/jquery-ui.css">
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"
+            integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+            crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
+    <link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css" />
+    <script>
+        $(document).ready(function () {
+            $.ajax({
+                type: "GET",
+                url: "index_helper.php",
+                success: function (data) {
+                    //alert(data);
+                    files = eval(data);
+                    //alert(files.files.length);
+                    html = "<div class=\"ui-grid-a\">";
+                    col = "ui-block-a";
+                    for (var i = 0; i < files.files.length; i++) {
+                        html += "<div class=\"" + col + "\">";
+                        html += "<a class=\"ui-btn\" href=\"" + files.files[i].name + "\">" + files.files[i].name + "</a>";
+                        if (col == "ui-block-a")
+                            col = "ui-block-b";
+                        else
+                            col = "ui-block-a";
+                        html += "</div>";
+                        //alert(html);
+                    }
+                    html += "</div>";
+                    $("#filelist").html(html);
+                }
+            });
+        });
+    </script>
+</head>
+<body style="background-color:silver;">
+    <br />
+    <div class="col-lg-1"></div>
+    <div class="col-lg-10 well" style="background-color:white;border-radius: 25px;">
+        <div id="filelist"></div>
+    </div>
+    <div class="col-lg-1"></div>
+</body>
+</html>

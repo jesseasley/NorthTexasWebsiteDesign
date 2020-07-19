@@ -1,0 +1,25 @@
+User-agent: *
+Allow: /css/
+Disallow: /images/
+Disallow: /payments/
+Disallow: /samples/
+Disallow: /TrackMuse/
+Disallow: /utilities/
+Disallow: /email.php
+Allow: /favicon.ico
+Disallow: /FreeImageSites.html
+Allow: /googlea95d7178926ffb47.html
+Disallow: /home.html
+Disallow: /loginUser.php
+Disallow: /Paypal.html
+Allow: /Professional Services Agreement.pdf
+Disallow: /registerUser.php
+Allow: /robots.txt
+Allow: /sitemap.xml
+Allow: /index.html
+Allow: /#Clients
+Allow: /#ContactUs
+Allow: /#Services
+Allow: /#Home
+
+Sitemap: http://NorthTexasWebsiteDesign.com/sitemap.xml

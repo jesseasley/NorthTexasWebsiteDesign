@@ -1,0 +1,92 @@
+﻿<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta http-equiv="Content-Type" content="text/html; charset=windows-1252" />
+    <title>Template</title>
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"
+            integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+            crossorigin="anonymous"></script>
+    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    
+    <!--icon library-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    
+    <!--<link rel="icon" href="images/favicon.ico" type="image/x-icon" />-->
+    <link id="favicon" rel="icon" href="images/realtor.gif" type="image/jpg" />
+    <meta name="robots" content="index,follow" />
+    <meta name="Accept-Encoding" content="gzip" />
+    <meta name="keywords" content="" />
+    <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="css/floating_label.css" />
+    <script type="text/javascript" src="js/config.js"></script>
+    <script type="text/javascript" src="js/script.js"></script>
+    <script>
+    </script>
+</head>
+<body>
+    <div id="header" class="row header_background">
+        <br />
+        <div class="col-lg-1">
+            <div id="logo"></div>
+        </div>
+        <div class="col-lg-10">
+            <div id="menus"></div>
+        </div>
+        <div class="col-lg-1">
+            <center>
+                <span id="facebook"></span>
+                <span id="twitter"></span>
+                <span id="blog"></span>
+                <span id="linkedin"></span>
+                <span id="youtube"></span>
+                <span id="instagram"></span>
+                <span id="pinterest"></span>
+                <span id="tumblr"></span>
+                <span id="flickr"></span>
+                <span id="googleplus"></span>
+                <span id="snapchat"></span>
+            </center>
+        </div>
+    </div>
+    <br />
+    <div id="page"></div>
+    <div class="modal fade" id="systemMessageModal">
+        <div class="modal-dialog" style="min-width:30%;max-width:100%;">
+            <div class="modal-content">
+                <!-- header -->
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h3 class="modal-title">System Message</h3>
+                </div>
+                <!-- body -->
+                <div class="modal-body">
+                    <div class="form-group">
+                        <div class="row">
+                            <div id="systemMessage" class="col-lg-12" style="display:inline-block;">
+                                <div style="display:inline-table;"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- footer -->
+
+                <div class="modal-footer">
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <button id="systemMessageCloseButton" class="btn btn-primary btn-block"
+                                    onclick="$('#systemMessageModal').modal('hide');">
+                                OK
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

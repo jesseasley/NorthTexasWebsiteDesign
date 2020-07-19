@@ -1,0 +1,166 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Navbar</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="https://code.jquery.com/ui/1.11.1/jquery-ui.js"></script>
+    <link rel="stylesheet" href="https://code.jquery.com/jquery-ui.css">
+    <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+    <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
+    <link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css" />
+    <style>
+    </style>
+</head>
+<body>
+    <section id="firstpage" data-role="page">
+        <header data-role="header">
+            <h1>Working with Lists</h1>
+        </header>
+        <div class="ui-content">
+            <h2>Weekly Agenda Summary</h2>
+            <ul data-role="listview" data-inset="true">
+                <li data-role="list-divider">Monday, November 14</li>
+                <li>
+                    <a href="#">
+                        <h4>To Do Item 1</h4>
+                        <p style="font-weight:bold">To do item 1 summary</p>
+                        <p class="ui-li-aside">Due at 12pm</p>
+                        <p>This is the detail text for ToDo Item 1</p>
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <h4>To Do Item 2</h4>
+                        <p style="font-weight:bold">To do item 2 summary</p>
+                        <p class="ui-li-aside">Due at 2pm</p>
+                        <p>This is the detail text for ToDo Item 2</p>
+                    </a>
+                </li>
+                <li data-role="list-divider">Tuesday, November 15</li>
+                <li>
+                    <a href="#">
+                        <h4>To Do Item 3</h4>
+                        <p style="font-weight:bold">To do item 3 summary</p>
+                        <p class="ui-li-aside">Due at 10:30am</p>
+                        <p>This is the detail text for ToDo Item 3</p>
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <h4>To Do Item 4</h4>
+                        <p style="font-weight:bold">To do item 4 summary</p>
+                        <p>This is the detail text for ToDo Item 4</p>
+                    </a>
+                </li>
+            </ul>
+        </div>
+        <div class="ui-content">
+            <h2>Ordered List Example</h2>
+            <ol data-role="listview">
+                <li><a href="#"><img src='images/us.png' class='ui-li-icon' />United States</a></li>
+                <li><a href="#"><img src='images/gb.png' class='ui-li-icon' />Great Britain</a></li>
+                <li><a href="#"><img src='images/de.png' class='ui-li-icon' />Germany</a></li>
+                <li><a href="#"><img src='images/gf.png' class='ui-li-icon' />France</a></li>
+            </ol>
+            <h2>Unordered List Example</h2>
+            <ul data-role="listview">
+                <li><a href="#"><img src='images/us.png' class='ui-li-icon' />United States</a></li>
+                <li><a href="#"><img src='images/gb.png' class='ui-li-icon' />Great Britain</a></li>
+                <li><a href="#"><img src='images/de.png' class='ui-li-icon' />Germany</a></li>
+                <li><a href="#"><img src='images/gf.png' class='ui-li-icon' />France</a></li>
+            </ul>
+        </div>
+        <div class="ui-content">
+            <h2>Ordered List Example</h2>
+            <ol data-role="listview" data-filter="true">
+                <li><a href="#"><img src='images/us.png' class='ui-li-icon' />United States</a></li>
+                <li><a href="#"><img src='images/gb.png' class='ui-li-icon' />Great Britain</a></li>
+                <li><a href="#"><img src='images/de.png' class='ui-li-icon' />Germany</a></li>
+                <li><a href="#"><img src='images/gf.png' class='ui-li-icon' />France</a></li>
+            </ol>
+            <h2>Unordered List Example</h2>
+            <ul data-role="listview" data-filter="true" data-filter-placeholder="Filter Countries...">
+                <li><a href="#"><img src='images/us.png' class='ui-li-icon' />United States</a></li>
+                <li><a href="#"><img src='images/gb.png' class='ui-li-icon' />Great Britain</a></li>
+                <li><a href="#"><img src='images/de.png' class='ui-li-icon' />Germany</a></li>
+                <li><a href="#"><img src='images/gf.png' class='ui-li-icon' />France</a></li>
+            </ul>
+        </div>
+        <div class="ui-content">
+            <h2>Ordered List Example</h2>
+            <ol data-role="listview">
+                <li><a href="#">List Item 1</a></li>
+                <li><a href="#">List Item 2</a></li>
+                <li><a href="#">List Item 3</a></li>
+                <li data-role="list-divider">Other Items</li>
+                <li><a href="#">List Item 4</a></li>
+                <li><a href="#">List Item 5</a></li>
+                <li><a href="#">List Item 6</a></li>
+            </ol>
+            <h2>Unordered List Example</h2>
+            <ul data-role="listview">
+                <li><a href="#">List Item 1</a></li>
+                <li><a href="#">List Item 2</a></li>
+                <li><a href="#">List Item 3</a></li>
+                <li><a href="#">List Item 4</a></li>
+                <li data-role="list-divider">Other Items</li>
+                <li><a href="#">List Item 5</a></li>
+                <li><a href="#">List Item 6</a></li>
+            </ul>
+        </div>
+        <div class="ui-content">
+            <h2>Ordered List Example</h2>
+            <ol data-role="listview">
+                <li><a href="#">List Item 1 <span class="ui-li-count">20</span></a></li>
+                <li><a href="#">List Item 2 <span class="ui-li-count">7</span></a></li>
+                <li><a href="#">List Item 3 <span class="ui-li-count">45</span></a></li>
+                <li><a href="#">List Item 4 <span class="ui-li-count">2</span></a></li>
+                <li><a href="#">List Item 5 </a></li>
+                <li><a href="#">List Item 6 <span class="ui-li-count">10</span></a></li>
+            </ol>
+            <h2>Unordered List Example</h2>
+            <ul data-role="listview">
+                <li><a href="#">List Item 1 <span class="ui-li-count">20</span></a></li>
+                <li><a href="#">List Item 2 <span class="ui-li-count">7</span></a></li>
+                <li><a href="#">List Item 3 <span class="ui-li-count">45</span></a></li>
+                <li><a href="#">List Item 4 <span class="ui-li-count">2</span></a></li>
+                <li><a href="#">List Item 5 </a></li>
+                <li><a href="#">List Item 6 <span class="ui-li-count">10</span></a></li>
+            </ul>
+        </div>
+        <div class="ui-content">
+            <h2>Wine Regions</h2>
+            <ul data-role="listview" data-divider-theme="b">
+                <li data-role="list-divider">America</li>
+                <li>California</li>
+                <li>
+                    <a href="#winedetails">Wine #1</a>
+                    <a href="#winenotes">Wine Notes</a>
+                </li>
+                <li>
+                    <a href="#winedetails">Wine #2</a>
+                    <a href="#winenotes">Wine Notes</a>
+                </li>
+                <li>
+                    <a href="#winedetails">Wine #3</a>
+                    <a href="#winenotes">Wine Notes</a>
+                </li>
+                <li>Washington</li>
+                <li>Oregon</li>
+                <li data-role="list-divider">France</li>
+                <li>Burgundy</li>
+                <li>Bordeaux</li>
+                <li>Languedoc</li>
+                <li data-role="list-divider">Italy</li>
+                <li>Tuscany</li>
+                <li>Sicily</li>
+                <li>Lombardia</li>
+            </ul>
+        </div>
+    </section>
+</body>
+</html>

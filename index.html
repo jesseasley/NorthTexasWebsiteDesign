@@ -1,0 +1,1257 @@
+<!DOCTYPE html>
+
+<html lang="en-us">
+
+<head>
+    <meta name="msvalidate.01" content="9F38F692B49A4874EC43FAEFDBA15FC5" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta http-equiv="Content-Type" content="text/html;charset=ISO-8859-8" />
+    <meta name="description" content="Need a company web site? We provide custom web designs for your business needs.
+          Responsive designs that are SEO optimized with hosting and email." />
+
+    <title>North Texas Website Design</title>
+    <!--<link rel="stylesheet" type="text/css" href="css/style.css" />-->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="css/floating_label.css" />
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+    <meta name="robots" content="index,follow" />
+    <meta name="keywords" content="website, design, consulting, it, web design, technology, application, websites, applications, designs, best" />
+    <style>
+        h1 {
+            font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+            font-size: 14px;
+            line-height: 1.42857143;
+            color: #333;
+            font-weight: bold;
+        }
+    </style>
+    <!--For Google Analytics-->
+    <script>
+        (function (i, s, o, g, r, a, m) {
+            i['GoogleAnalyticsObject'] = r; i[r] = i[r] || function () {
+                (i[r].q = i[r].q || []).push(arguments)
+            }, i[r].l = 1 * new Date(); a = s.createElement(o),
+                m = s.getElementsByTagName(o)[0]; a.async = 1; a.src = g; m.parentNode.insertBefore(a, m)
+        })(window, document, 'script', 'https://www.google-analytics.com/analytics.js', 'ga');
+
+        ga('create', 'UA-106023626-1', 'auto');
+        ga('send', 'pageview');
+    </script>
+    <script type="text/javascript">
+        user = eval("({})");
+        var monthNames = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+        var d = new Date();
+        var transitionSpeed = 500;
+        $(document).ready(function () {
+            $("#monthName").html(monthNames[d.getMonth()]);
+            $("#monthName1").html(monthNames[d.getMonth()]);
+            $("#monthName2").html(monthNames[d.getMonth()]);
+            //$("#btnHome").append("<img src=images/home.jpg width=110 height=110  />");
+            //$("#btnServices").append("<img src=images/services.jpg width=110 height=110  />");
+            //$("#btnClients").append("<img src=images/clients.jpg width=110 height=110  />");
+            //$("#btnContactUs").append("<img src=images/contactus.jpg width=110 height=110  />");
+            $("#placeholder").hide();
+            var page = "index.html";
+            page = "homepage";
+            if (location.toString().indexOf("#Home") > 0)
+                page = "homepage";
+            if (location.toString().indexOf("#Services") > 0)
+                page = "servicespage";
+            if (location.toString().indexOf("#Clients") > 0)
+                page = "clientspage";
+            if (location.toString().indexOf("#ContactUs") > 0)
+                page = "contactuspage";
+            if (location.toString().indexOf("#AdvancedServices") > 0)
+                page = "advancedservicespage";
+            if (location.toString().indexOf("#Login") > 0)
+                page = "login";
+            if (location.toString().indexOf("#Register") > 0)
+                page = "register";
+            $.ajax({
+                type: "GET",
+                url: "getCookie.php?name=user",
+                success: function (data) {
+                    //alert(data);
+                    if (data > "") {
+                        user = eval("(" + data + ")");
+                        $("#userName1").html("Logged in as: " + user.user.username + " - ");
+                        $("#userName2").html(user.user.username + " - ");
+                        $("#loginLink").html("<a style=\"color:white\" style=\"text-decoration:none\" href=\"#Home\" onclick=\"logOut();\"><u>Log Out</u></a>");
+                        $("#registerLink").html("");
+                    }
+                }
+            });
+            show(page);
+        });
+        function show(screen) {
+            if (screen == "homepage")
+                document.title = "North Texas Website Design";
+            if (screen == "clientspage")
+                document.title = "Clients";
+            if (screen == "servicespage")
+                document.title = "Services";
+            if (screen == "contactuspage")
+                document.title = "Contact Us";
+            if (screen == "login")
+                document.title = "Login";
+            if (screen == "register")
+                document.title = "Register";
+            if (screen == "advancedservicespage")
+                document.title = "Advanced Services";
+            var scr = "noscroll";
+            var transType = 3;
+            if ((screen == "clientspage") || (screen == "advancedservicespage"))
+                scr = "scroll";
+            if ((screen == "thankspage") || (screen == "advancedservicespage"))
+                transType = 2;
+            if (transType == 1) {
+                $("#placeholder").hide(
+                    transitionSpeed,
+                    function () {
+                        $("#placeholder").html($("#" + screen).html());
+                        $("#placeholder").attr("class", "maincontent show col-lg-12 col-md-12 col-sm-12 " + scr);
+                        $("#placeholder").show(transitionSpeed, function () {
+                            $("#monthName1").html(monthNames[d.getMonth()]);
+                            $("#monthName2").html(monthNames[d.getMonth()]);
+
+                        });
+                    }
+                );
+            }
+            if (transType == 2) {
+                $("#placeholder").slideUp(transitionSpeed, function () {
+                    $("#placeholder").html($("#" + screen).html());
+                    $("#placeholder").attr("class", "maincontent show col-lg-12 col-md-12 col-sm-12 " + scr);
+                    $("#placeholder").slideDown(transitionSpeed, function () {
+                        $("#monthName1").html(monthNames[d.getMonth()]);
+                        $("#monthName2").html(monthNames[d.getMonth()]);
+                    });
+                });
+            }
+            if (transType == 3) {
+                $("#placeholder").fadeOut(transitionSpeed, function () {
+                    $("#placeholder").html($("#" + screen).html());
+                    $("#placeholder").attr("class", "maincontent show col-lg-12 col-md-12 col-sm-12 " + scr);
+                    $("#placeholder").fadeIn(transitionSpeed, function () {
+                        $("#monthName1").html(monthNames[d.getMonth()]);
+                        $("#monthName2").html(monthNames[d.getMonth()]);
+                        if (screen == "login") {
+                            $("#LoginUsername").focus();
+                            validateField('Username', 'Login');
+                            validateField('Password', 'Login');
+                        }
+                        if (screen == "register")
+                            $("#RegisterUsername").focus();
+                    });
+                });
+            }
+            return true;
+        }
+        function isEmail(email) {
+            var regex = /^([a-zA-Z0-9_\.\-\+])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/;
+            return regex.test(email);
+        }
+        function validateFields() {
+            var requiredMissing = "";
+            var validEmail = "";
+            var msg = "";
+            if ($("#nameText").val() == "") {
+                requiredMissing = "Name";
+            }
+            if ($("#emailText").val() == "") {
+                if (requiredMissing == "") {
+                    requiredMissing = "Email";
+                }
+                else {
+                    requiredMissing += ", Email";
+                }
+
+            }
+            if ($("#phoneText").val() == "") {
+                if (requiredMissing == "") {
+                    requiredMissing = "Phone";
+                }
+                else {
+                    requiredMissing += " and Phone";
+                }
+            }
+            if (requiredMissing != "")
+                msg = "Missing required fields: " + requiredMissing;
+            if (!(isEmail($("#emailText").val()))) {
+                validEmail = "Please check the format of the email address.";
+                msg += "\n" + validEmail;
+            }
+            if (msg == "") {
+                return true;
+            }
+            else {
+                alert(msg);
+                return false;
+            }
+        }
+        function sendMail() {
+            if (validateFields()) {
+                $.ajax({
+                    type: "POST",
+                    url: "email.php",
+                    data: "name=" + $("#nameText").val() +
+                        "&email=" + $("#emailText").val() +
+                        "&phone=" + $("#phoneText").val() +
+                        "&subject=" + $("#subjectText").val() +
+                        "&body=" + $("#bodyTextArea").val(),
+                    success: function (data) {
+                        show("thankspage");
+                        if (data == "success")
+                            $("#emailResults").html("Thanks for contacting us.<br /><br />Someone will respond to your request shortly.");
+                        else if (data == "error")
+                            $("#emailResults").html("Something went wrong and we were unable to send your mail.<br /><br />Please try again later.");
+                        else
+                            $("#emailResults").html(data);
+                    }
+                });
+            }
+        }
+        function makePayment() {
+            if ("user" in user) {
+                if (user.user.bill == "0") {
+                    alert("Your bill has a zero balance");
+                }
+                else if (user.user.bill == "") {
+                    alert("We're unable to find a matching account for you.  " +
+                        "\nPlease use the contact us page to ask for help.");
+                }
+                else {
+                    $("#amount").val(user.user.bill);
+                    $("#paynowForm").submit();
+                    show("homepage");
+                }
+            }
+            else {
+                alert("Please log in before paying your bill");
+            }
+        }
+        function loginUser() {
+            var errMsg = "";
+            if ($("#LoginUsername").val() == "")
+                errMsg += "Please provide a username\n";
+            if ($("#LoginPassword").val() == "")
+                errMsg += "Please provide a password\n";
+            if (errMsg == "") {
+                $.ajax({
+                    type: "POST",
+                    url: "loginUser.php",
+                    data: "username=" + $("#LoginUsername").val() +
+                        "&password=" + $("#LoginPassword").val(),
+                    success: function (data) {
+                        //alert(data);
+                        user = eval("(" + data + ")");
+                        if ("error" in user.user)
+                            alert(user.user.error);
+                        else {
+                            $("#userName1").html("Logged in as: " + user.user.username + " - ");
+                            $("#userName2").html(user.user.username + " - ");
+                            $("#loginLink").html("<a style=\"color:white\" style=\"text-decoration:none\" href=\"#Home\" onclick=\"logOut();\"><u>Log Out</u></a>");
+                            $("#registerLink").html("");
+                            $.ajax({
+                                type: "POST",
+                                url: "setCookie.php",
+                                data: "name=user&value=" + JSON.stringify(user),
+                                success: function (data) {
+                                    //alert(data);
+                                },
+                                error: function (j, err) {
+                                    alert("error setting cookie: " + j.status);
+                                }
+                            });
+                            show("homepage");
+                        }
+                    },
+                    error: function (j, err) {
+                        alert("error logging in user: " + j.status);
+                    }
+                });
+            }
+            else {
+                alert(errMsg);
+            }
+        }
+        function logOut() {
+            $("#userName1").html("");
+            $("#userName2").html("");
+            user = eval("({})");
+            $("#loginLink").html("<a style=\"color:white;text-decoration:none\" href=\"#Login\" onclick=\"show('login');\"><u>Log In</u></a>");
+            $("#registerLink").html("<a style=\"color:white;text-decoration:none\" href=\"#Register\" onclick=\"show('register');\"><u>Register</u></a><br />");
+            $.ajax({
+                type: "POST",
+                url: "setCookie.php",
+                data: "name=user&value=",
+                success: function (data) {
+                    //alert("cookie: " + data);
+                },
+                error: function (j, err) {
+                    alert("error setting cookie: " + j.status);
+                }
+            });
+        }
+        function validateField(field, prefix) {
+            if ($("#" + prefix + field).val() == "") {
+                $("#div" + prefix + field).removeClass("has-success");
+                $("#span" + prefix + field).removeClass("glyphicon-ok");
+                $("#div" + prefix + field).removeClass("has-error");
+                $("#div" + prefix + field).addClass("has-error");
+                $("#span" + prefix + field).removeClass("glyphicon-remove");
+                $("#span" + prefix + field).addClass("glyphicon-remove");
+            }
+            else {
+                $("#div" + prefix + field).removeClass("has-error");
+                $("#span" + prefix + field).removeClass("glyphicon-remove");
+                $("#div" + prefix + field).removeClass("has-success");
+                $("#div" + prefix + field).addClass("has-success");
+                $("#span" + prefix + field).removeClass("glyphicon-ok");
+                $("#span" + prefix + field).addClass("glyphicon-ok");
+            }
+        }
+        function registerUser() {
+            var errMsg = "";
+            if ($("#RegisterUsername").val() == "")
+                errMsg += "Please provide a username\n";
+            if ($("#RegisterPassword").val() == "")
+                errMsg += "Please provide a password\n";
+            if ($("#RegisterEmail").val() == "")
+                errMsg += "Please provide an email\n";
+            if ($("#RegisterAccount").val() == "")
+                errMsg += "Please provide an account\n";
+            if (errMsg == "") {
+                $.ajax({
+                    type: "POST",
+                    url: "registerUser.php",
+                    data: "username=" + $("#RegisterUsername").val() +
+                        "&password=" + $("#RegisterPassword").val() +
+                        "&email=" + $("#RegisterEmail").val() +
+                        "&account=" + $("#RegisterAccount").val(),
+                    success: function (data) {
+                        //alert("register: " + data);
+                        user = eval("(" + data + ")");
+                        if ("error" in user.user)
+                            alert(user.user.error);
+                        else {
+                            $("#userName1").html("Logged in as: " + user.user.username + " - ");
+                            $("#userName2").html(user.user.username + " - ");
+                            $("#loginLink").html("<a style=\"color:white\" style=\"text-decoration:none\" href=\"#Home\" onclick=\"logOut();\"><u>Log Out</u></a>");
+                            $("#registerLink").html("");
+                            $.ajax({
+                                type: "POST",
+                                url: "setCookie.php",
+                                data: "name=user&value=" + JSON.stringify(user),
+                                success: function (data) {
+                                    //alert("cookie: " + data);
+                                },
+                                error: function (j, err) {
+                                    alert("error setting cookie: " + j.status);
+                                }
+                            });
+
+                            show("homepage");
+                        }
+                    },
+                    error: function (j, err) {
+                        alert("error registering user: " + j.status);
+                    }
+                });
+            }
+            else {
+                alert(errMsg);
+            }
+        }
+    </script>
+</head>
+
+<body topmargin="0" bottommargin="0" leftmargin="0" rightmargin="0">
+    <div class="container">
+        <div class="row" id="Header">
+            <div class="col-lg-1 hidden-md hidden-sm hidden-xs"></div>
+            <div class="col-lg-10 col-md-12 col-sm-12 col-xs-12" style="background-image:url(images/HeaderBackground.jpg)">
+                <div class="row">
+                    <div class="col-lg-6 col-md-4 col-sm-4 col-xs-4">
+                        <img class="hidden-xs " src="images/logo.jpg"
+                             alt="North Texas Website Design is the premier provider for small business" width="131px" height="130px" />
+                        <img class="hidden-sm hidden-md hidden-lg" src="images/logo.jpg"
+                             alt="North Texas Website Design is the premier provider for small business" height="75px" />
+                    </div>
+                    <div class="col-lg-6 text col-md-8 col-sm=8 col-xs-8" style="text-align:right;">
+                        <div class="hidden-xs hidden-sm">
+                            <img src="images/title.jpg"
+                                 alt="Specializing in real estate broker and agent sites" /><br />
+                        </div>
+                        <span style="color:white">
+                            Phone: (972) 284-9403<br />
+                            Email: <a style="color:white" style="text-decoration:none" href="#ContactUs" onclick="show('contactuspage');">
+                                <span style="color:white"><u>Send us an email</u></span>
+                            </a><br />
+                            <span class="hidden-xs" id="userName1"></span>
+                            <span class="hidden-sm hidden-ms hidden-lg" id="userName2"></span>
+                            <span id="loginLink">
+                                <a style="color:white;text-decoration:none" href="#Login" onclick="show('login');"><u>Log In</u></a>
+                            </span>
+                            <span id="registerLink">
+                                <a style="color:white;text-decoration:none" href="#Register" onclick="show('register');"><u>Register</u></a><br />
+                            </span>
+                        </span>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-1 hidden-md hidden-sm hidden-xs"></div>
+        </div>
+        <div class="row" id="Body">
+            <div class="col-lg-1 hidden-md hidden-sm hidden-xs"></div>
+            <div class="col-lg-10 col-md-12 col-sm-12 col-xs-12" style="background-color:#96A4C5">
+                <br />
+                <div class="row">
+                    <div class="col-lg-2 col-md-1 col-sm-12 col-xs-12" id="MenuButtons">
+                        <center>
+                            <a href="#Home" onclick="show('homepage');">
+                                <img class="hidden-sm hidden-xs hidden-md" src="images/home.jpg" rel="preload"
+                                     alt="basic services include hosting and domain renewal" height="120px" width="120px" />
+                                <img class="hidden-lg hidden-xs" src="images/home.jpg" rel="preload"
+                                     alt="basic services include hosting and domain renewal" height="72px" width="72px" />
+                                <img class="hidden-lg hidden-md hidden-sm" src="images/home.jpg" rel="preload"
+                                     alt="basic services include hosting and domain renewal" height="52px" width="52px" />
+                            </a>
+                            <a href="#Services" onclick="show('servicespage');">
+                                <img class="hidden-sm hidden-xs hidden-md" src=images/services.jpg rel="preload"
+                                     alt="brochure ware design pages database email responsive seo" height="120px" width="120px" />
+                                <img class="hidden-lg hidden-xs" src="images/services.jpg" rel="preload"
+                                     alt="brochure ware design pages database email responsive seo" height="72px" width="72px" />
+                                <img class="hidden-lg hidden-md hidden-sm" src="images/services.jpg" rel="preload"
+                                     alt="brochure ware design pages database email responsive seo" height="52px" width="52px" />
+                            </a>
+                            <a href="#Clients" onclick="show('clientspage');">
+                                <img class="hidden-sm hidden-xs hidden-md" src=images/clients.jpg rel="preload"
+                                     alt="real estate agent entertainment hoa financial" height="120px" width="120px" />
+                                <img class="hidden-lg hidden-xs" src="images/clients.jpg" rel="preload"
+                                     alt="real estate agent entertainment hoa financial" height="72px" width="72px" />
+                                <img class="hidden-lg hidden-md hidden-sm" src="images/clients.jpg" rel="preload"
+                                     alt="real estate agent entertainment hoa financial" height="52px" width="52px" />
+                            </a>
+                            <a href="#ContactUs" onclick="show('contactuspage');">
+                                <img class="hidden-sm hidden-xs hidden-md" src=images/contactus.jpg rel="preload"
+                                     alt="email descreet secure contact inquire" height="120px" width="120px" />
+                                <img class="hidden-lg hidden-xs" src="images/contactus.jpg" rel="preload"
+                                     alt="email descreet secure contact inquire" height="72px" width="72px" />
+                                <img class="hidden-lg hidden-md hidden-sm" src="images/contactus.jpg" rel="preload"
+                                     alt="email descreet secure contact inquire" height="52px" width="52px" />
+                            </a>
+                            <a href="#Home" onclick="makePayment();">
+                                <img class="hidden-sm hidden-xs hidden-md" src=images/paynow.jpg rel="preload"
+                                     alt="paypal secure safe inexpensive" height="120px" width="120px" />
+                                <img class="hidden-lg hidden-xs" src="images/paynow.jpg" rel="preload"
+                                     alt="paypal secure safe inexpensive" height="72px" width="72px" />
+                                <img class="hidden-lg hidden-md hidden-sm" src="images/paynow.jpg" rel="preload"
+                                     alt="paypal secure safe inexpensive" height="52px" width="52px" />
+                            </a>
+                        </center>
+                    </div>
+                    <div class="col-lg-10 col-md-11 col-sm-12 col-xs-12" id="MainBody">
+                        <center>
+                            <div id="placeholder" class="maincontent show noscroll" style="padding:10px 10px 10px 10px;text-align:left;font-weight:bold;">
+                                <div class="panel panel-default">
+                                    <div class="panel-heading">Home</div>
+                                    <div class="panel-body">
+                                        Do you have a small business in need of a web presence?
+                                        <br /><br />
+                                        We specialize in catering to small businesses, because we're one too. <br /><br />
+                                        We know exactly what you need from IDX to SEO.  <br /><br />
+                                        Among the many reasons our customers require custom web development are;
+                                        <ul>
+                                            <li>Single Page Customization</li>
+                                            <li>Web Site Enhancements</li>
+                                            <li>Performance Improvements</li>
+                                            <li>Security Audits</li>
+                                            <li>Custom Designs</li>
+                                            <li>Data Driven Sites</li>
+                                            <li>Adding Workflow Features</li>
+                                            <li>Platform Migrations</li>
+                                        </ul>
+                                        <ul>
+                                            <li>Personal Sites</li>
+                                            <li>Gaming Sites</li>
+                                            <li>Departmental Sites</li>
+                                            <li>Small Business Sites</li>
+                                            <li>e-Commerce B2B Sites</li>
+                                        </ul>
+                                        Whether you need help with smaller one-page sites or with
+                                        complex multi-tier, database driven, e-Commerce
+                                        environments, we have the experience and expertise to help.
+                                        <br /><br />
+                                        Call us for a FREE estimate.
+                                        <br />
+                                        Take advantage of sales pricing on designs running through <span id="monthName1"></span>!
+                                    </div>
+                                </div>
+                            </div>
+                        </center>
+                    </div>
+                </div>
+                <br />
+            </div>
+            <div class="col-lg-1 hidden-md hidden-sm hidden-xs"></div>
+        </div>
+    </div>
+    <div id="homepage" class="maincontent hidden">
+        <link rel="canonical" href="http://NorthTexasWebsiteDesign.com/Home">
+        <div class="panel panel-default">
+            <div class="panel-heading">Home</div>
+            <div class="panel-body">
+                Do you have a small business in need of a web presence?
+                <br /><br />
+                We specialize in catering to small businesses, because we're one too.
+                <br /><br />
+                We know exactly what you need from IDX to SEO.  <br /><br />
+                Among the many reasons our customers require custom web development are;
+                <ul>
+                    <li>Single Page Customization</li>
+                    <li>Web Site Enhancements</li>
+                    <li>Performance Improvements</li>
+                    <li>Security Audits</li>
+                    <li>Custom Designs</li>
+                    <li>Data Driven Sites</li>
+                    <li>Adding Workflow Features</li>
+                    <li>Platform Migrations</li>
+                </ul>
+                <ul>
+                    <li>Personal Sites</li>
+                    <li>Gaming Sites</li>
+                    <li>Departmental Sites</li>
+                    <li>Small Business Sites</li>
+                    <li>e-Commerce B2B Sites</li>
+                </ul>
+                Whether you need help with smaller one-page sites or with
+                complex multi-tier, database driven, e-Commerce
+                environments, we have the experience and expertise to help.
+                <br /><br />
+                Call us for a FREE estimate.
+                <br />
+                Take advantage of sales pricing on designs running through <span id="monthName2"></span>!<br /><br />
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <a data-toggle="collapse" data-target="#award">
+                            Winner of 2019 Best of Flower Mound Award  >>>Click to see more<<<
+                        </a>
+                    </div>
+                    <div id="award" class="panel-collapse collapse" style="margin:5px;">
+                        <h4><b><center><u>North Texas Website Design Receives 2019 Best of Flower Mound Award</u></center></b></h4>
+                        <br />
+                        Flower Mound Award Program Honors the Achievement
+                        <br />
+                        <br />
+                        FLOWER MOUND October 7, 2019 -- North Texas Website Design has been selected for the 2019 Best of Flower Mound Award in the Website Designer
+                        category by the Flower Mound Award Program.
+                        <br />
+                        <br />
+                        Each year, the Flower Mound Award Program identifies companies that we believe have achieved exceptional marketing success in their local community
+                        and business category. These are local companies that enhance the positive image of small business through service to their customers and our community.
+                        These exceptional companies help make the Flower Mound area a great place to live, work and play.
+                        <br />
+                        <br />
+                        Various sources of information were gathered and analyzed to choose the winners in each category. The 2019 Flower Mound Award Program focuses on
+                        quality, not quantity. Winners are determined based on the information gathered both internally by the Flower Mound Award Program and data provided by third parties.
+                        <br />
+                        <br />
+                        About Flower Mound Award Program
+                        <br />
+                        <br />
+                        The Flower Mound Award Program is an annual awards program honoring the achievements and accomplishments of local businesses throughout
+                        the Flower Mound area. Recognition is given to those companies that have shown the ability to use their best practices and implemented programs
+                        to generate competitive advantages and long-term value.
+                        <br />
+                        <br />
+                        The Flower Mound Award Program was established to recognize the best of local businesses in our community. Our organization works exclusively with
+                        local business owners, trade groups, professional associations and other business advertising and marketing groups. Our mission is to recognize the
+                        small business community's contributions to the U.S. economy.
+                        <br />
+                        <br />
+                        SOURCE: Flower Mound Award Program
+                    </div>
+                </div>
+                <div id="login" class="mainbody hidden">
+                    <link rel="canonical" href="http://NorthTexasWebsiteDesign.com/Login">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            Login
+                        </div>
+                        <div class="panel-body">
+                            <div id="divLoginUsername" class="form-group has-error has-feedback">
+                                <input id="LoginUsername" onchange="validateField('Username', 'Login');" type="text" class="form-control" required />
+                                <label class="form-control-placeholder" for="LoginUsername">Username</label>
+                                <!--<span id="spanLoginUsername" class="glyphicon glyphicon-remove form-control-feedback"></span>-->
+                            </div>
+                            <div id="divLoginPassword" class="form-group has-error has-feedback">
+                                <input id="LoginPassword" onchange="validateField('Password', 'Login');" type="password" class="form-control" required />
+                                <label class="form-control-placeholder" for="LoginPassword">Password</label>
+                                <!--<span id="spanLoginPassword" class="glyphicon glyphicon-remove form-control-feedback"></span>-->
+                            </div>
+                            <a href="#Home" onclick="loginUser();" class="btn btn-primary pull-right">Log In</a>
+                            <br /><br />
+                            Don't have a login? <a href="#Register" onclick="show('register');">Register here</a>.
+                        </div>
+                    </div>
+                </div>
+                <div id="register" class="mainbody hidden">
+                    <link rel="canonical" href="http://NorthTexasWebsiteDesign.com/Register">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            Register
+                        </div>
+                        <div class="panel-body">
+                            <div id="divRegisterUsername" class="form-group has-error has-feedback">
+                                <input id="RegisterUsername" onchange="validateField('Username', 'Register');" type="text" class="form-control" value="" required />
+                                <label class="form-control-placeholder" for="RegisterUsername">Username</label>
+                                <!--<span id="spanRegisterUsername" class="glyphicon glyphicon-remove form-control-feedback"></span>-->
+                            </div>
+                            <div id="divRegisterPassword" class="form-group has-error has-feedback">
+                                <input id="RegisterPassword" onchange="validateField('Password', 'Register');" type="password" class="form-control" value="" required />
+                                <label class="form-control-placeholder" for="RegisterPassword">Password</label>
+                                <!--<span id="spanRegisterPassword" class="glyphicon glyphicon-remove form-control-feedback"></span>-->
+                            </div>
+                            <div id="divRegisterEmail" class="form-group has-error has-feedback">
+                                <input id="RegisterEmail" onchange="validateField('Email', 'Register');" type="email" class="form-control" value="" required />
+                                <label class="form-control-placeholder" for="RegisterEmail">Email</label>
+                                <!--<span id="spanRegisterEmail" class="glyphicon glyphicon-remove form-control-feedback"></span>-->
+                            </div>
+                            <div id="divRegisterAccount" class="form-group has-error has-feedback">
+                                <input id="RegisterAccount" onchange="validateField('Account', 'Register');" type="text" class="form-control" value="" required />
+                                <label class="form-control-placeholder" for="RegisterAccount">Account name. (i.e.: NorthTexasWebsiteDesign.com)</label>
+                                <!--<span id="spanRegisterAccount" class="glyphicon glyphicon-remove form-control-feedback"></span>-->
+                            </div>
+                            <a href="#Home" class="btn btn-primary pull-right" onclick="registerUser();">Register</a>
+                            <br /><br />
+                            Already registered? <a href="#Login" onclick="show('login');">Login here</a>.
+                        </div>
+                    </div>
+                </div>
+                <div id="servicespage" class="maincontent hidden">
+                    <link rel="canonical" href="http://NorthTexasWebsiteDesign.com/Services">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">Services</div>
+                        <div class="panel-body">
+                            Your typical brochure-ware is our least expensive option.
+
+                            This includes;
+                            <br /><br />
+                            <ul>
+                                <li>Mobile first designs. The site is built with responsive in mind</li>
+                                <li>SEO optimized so your site works for you</li>
+                                <li>
+                                    Making sure your domain name is properly connected to your hosting
+                                    account
+                                </li>
+                                <li>Working with you to make sure we have a site design that works for you</li>
+                                <li>Design of a template. Template based sites are easier to maintain</li>
+                                <li>Development of the site, based on the template</li>
+                                <li>CSS </li>
+                                <li>Providing the correct directory structure</li>
+                                <li>BIO page</li>
+                                <li>"Contact us" page</li>
+                                <li>4-5 pages total</li>
+                                <li>Posting all content to the final domain and testing all links</li>
+                                <li>
+                                    Walking you through how to upload modifications, so you can take over
+                                    when I'm done
+                                </li>
+                                <li>Initial setup of all emails</li>
+                                <li>
+                                    Note: To look professional, if your domain name is www.YourDomain.com, your email should be
+                                    <a href="mailto:YourName@YourDomain.com">YourName@YourDomain.com</a>
+
+                                </li>
+                            </ul>
+                            <p>
+                                If your web development needs are more complicated that the typical
+                                brochure-ware site, we can help there too.&nbsp;
+                                <a href="#AdvancedServices" onclick="show('advancedservicespage');">
+                                    Click here
+                                </a> to see the advanced services we offer.
+                            </p>
+                            <p>
+                                All we need to get started is a signed Professional Services Agreement.&nbsp;
+                                <br />
+                                <a href="Professional%20Services%20Agreement.pdf" target="_blank">
+                                    Download the Professional Services Agreement in PDF format
+                                </a>.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div id="thankspage" class="maincontent hidden">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">Email Results</div>
+                        <div class="panel-body">
+                            <div id="emailResults"></div>
+                        </div>
+                    </div>
+                </div>
+                <div id="clientspage" class="maincontent hidden">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">GarageRegistry.com</div>
+                        <div class="panel-body">
+                            <center>
+                                <!--<a href="http://GarageRegistry.com/" target="_blank">-->
+                                <img border="0" src="images/GarageRegistry.jpg" rel="preload" width="199" height="82px">
+                                <!--</a>--><br />
+                            </center>
+                            <hr />
+                        </div>
+                    </div>
+                    <div class="panel panel-default">
+                        <div class="panel-heading">KingdomEstateRealty.com</div>
+                        <div class="panel-body">
+
+                            <center>
+                                <a href="http://KingdomEstateRealty.com/" rel="noreferrer" target="_blank">
+                                    <img border="0" src="images/KingdomEstateRealty.jpg" rel="preload" width="199">
+                                </a><br />
+                            </center>
+                            <br />
+                            <span style="text-align:left">
+                                Jess is more than just a website designer, he is a real Professional in the world of web
+                                development and E-commence.
+                                <br /><br />
+                                His diligence, responsiveness and willing to work with client's specific needs make his
+                                company unique in today's competitive market place. Jess is always quick to response and
+                                staying ahead of the curve for business owner who wants things done in an expeditious way.
+                                <br /><br />
+                                During my website implementation, numerous issues surfaced while transferring the domain
+                                name between 3 different companies, Jess was relentless and was on call with me (talking
+                                with vendors) to ensure issues are resolved and solutions in placed and expedited. That
+                                resulted in my company's website being launched ahead of schedule.
+                                <br /><br />
+                                I am excited about my newly website designed and built by Jess' company but am equally
+                                enthusiastic about what is to come as Jess' company continues to improve the mobile
+                                interface which will greatly benefit anyone who use his professional service in the future.
+                                <br /><br />
+                                I will strongly recommend Jess and his company to anyone who is looking for personalized
+                                service, attention to details and superior client services because Jess will give your
+                                business/organization that edge over your competitors. Thank you again and Great Job, Jess!"
+                                <br /><br />
+                                Best Regards,
+                                <br />
+                                Chris Ho
+                            </span>
+                        </div>
+                    </div>
+                    <div class="panel panel-default">
+                        <div class="panel-heading">PrincessForOneDayMovie.com</div>
+                        <div class="panel-body">
+                            <center>
+                                <hr />
+                                <a href="http://www.princessforonedaymovie.com" rel="noreferrer" target="_blank">
+                                    <img border="0" src="images/princessforoneday.jpg" rel="preload" width="200" height="94" />
+                                </a>
+                            </center>
+                        </div>
+                    </div>
+                    <div class="panel panel-default">
+                        <div class="panel-heading">AltamiraConcrete.com</div>
+                        <div class="panel-body">
+                            <center>
+                                <img border="0" src="images/AltamiraConcrete.jpg" rel="preload" width="200" height="207" />
+                            </center>
+                        </div>
+                    </div>
+                    <div class="panel panel-default">
+                        <div class="panel-heading">Bartendertainment.com</div>
+                        <div class="panel-body">
+                            <center>
+                                <img border="0" src="images/bartendertainment.jpg" rel="preload" width="200" height="127" />
+                            </center>
+                        </div>
+                    </div>
+                    <div class="panel panel-default">
+                        <div class="panel-heading">GREnterpriseServices.com</div>
+                        <div class="panel-body">
+                            <center>
+                                <a href="http://www.grenterpriseservices.com" rel="noreferrer" target="_blank">
+                                    <img border="0" src="images/grenterprise.jpg" rel="preload" width="200" height="115" />
+                                </a>
+                            </center>
+                        </div>
+                    </div>
+                    <div class="panel panel-default">
+                        <div class="panel-heading">HomesForSaleInHighlandVillage.com</div>
+                        <div class="panel-body">
+                            <center>
+                                <img border="0" src="images/homesforsaleinhighlandvillage.jpg" rel="preload" width="200" height="174" /><br />
+                            </center>
+                        </div>
+                    </div>
+                    <div class="panel panel-default">
+                        <div class="panel-heading">HomesForSaleInLewisville.com</div>
+                        <div class="panel-body">
+                            <center>
+                                <img border="0" src="images/homesforsaleinlewisville.jpg" rel="preload" width="200" height="206" /><br />
+                            </center>
+                        </div>
+                    </div>
+                    <div class="panel panel-default">
+                        <div class="panel-heading">TexasExpressRealty.com</div>
+                        <div class="panel-body">
+                            <center>
+                                <img border="0" src="images/texasexpressrealty.jpg" rel="preload" width="199" height="212"><br />
+                            </center>
+                            <br />
+                            <span style="text-align:left">
+                                Thanks for helping me design my new real estate web site.
+                                I was paying $500 per year for a template web site that I didn't own, and had no control over.
+                                You bent over backwards to make me happy & made all the changes I requested.
+                                I'm thankful  that we crossed paths, and hope to do more business with you in the future.
+                                <br /><br />Thanks, <br />David Cook - Texas Express Realty
+                            </span>
+                        </div>
+                    </div>
+                    <div class="panel panel-default">
+                        <div class="panel-heading">Serena Mar</div>
+                        <div class="panel-body">
+                            <center>
+                                Notebook repair
+                            </center>
+                        </div>
+                    </div>
+                    <div class="panel panel-default">
+                        <div class="panel-heading">WaterfordParkEstates.com</div>
+                        <div class="panel-body">
+                            <center>
+                                <a href="http://www.waterfordparkestates.com/" rel="noreferrer" target="_blank">
+                                    <img border="0" src="images/waterfordparkestates.jpg" rel="preload" width="200" height="97" />
+                                </a>
+                            </center>
+                        </div>
+                    </div>
+                    <div class="panel panel-default">
+                        <div class="panel-heading">MuralSystemsInc.com</div>
+                        <div class="panel-body">
+                            <center>
+                                <img border="0" src="images/muralsystems.jpg" rel="preload" width="200" height="111" /><br />
+                            </center>
+                            <br />
+                            <span style="text-align:left">
+                                I liked the way you clearly defined things upfront,
+                                did the changes requested and made the whole process easy and quick to get the website up.
+                                Also your effort to talk to godaddy to leverage the pricing was a great gesture too.
+                                <br /><br />Thank you
+                                <br />Murali
+                            </span>
+                        </div>
+                    </div>
+                    <div class="panel panel-default">
+                        <div class="panel-heading">Search4Realtor.com</div>
+                        <div class="panel-body">
+                            <center>
+                                <img border="0" src="images/search4realtor.jpg" rel="preload" width="200" height="129" />
+                            </center>
+                        </div>
+                    </div>
+                    <div class="panel panel-default">
+                        <div class="panel-heading">EasleyRealty.com</div>
+                        <div class="panel-body">
+                            <center>
+                                <a target="_blank" rel="noreferrer" href="http://www.easley-realty.com">
+                                    <img border="0" src="images/easleyrealty.jpg" rel="preload" width="200" height="117" />
+                                </a>
+                            </center>
+                        </div>
+                    </div>
+                    <div class="panel panel-default">
+                        <div class="panel-heading">CrystalAdvantage.com</div>
+                        <div class="panel-body">
+                            <center>
+                                <a href="http://www.crystaladvantage.com" rel="noreferrer" target="_blank">
+                                    <img border="0" src="images/Crystal%20Advantage.jpg" rel="preload" width="200" height="157" />
+                                </a>
+                            </center>
+                        </div>
+                    </div>
+                    <div class="panel panel-default">
+                        <div class="panel-heading">CitiFinancial Auto</div>
+                        <div class="panel-body">
+                            <center>
+                                &nbsp;<img border="0" src="images/Citi%20Financial.jpg" rel="preload" width="200" height="137" />
+                            </center>
+                        </div>
+                    </div>
+                    <div class="panel panel-default">
+                        <div class="panel-heading">ArcadiaFinancial.com</div>
+                        <div class="panel-body">
+                            <center>
+                                &nbsp;<img border="0" src="images/Arcadia%20Financial.jpg" rel="preload" width="200" height="130" />
+                            </center>
+                        </div>
+                    </div>
+                    <div class="panel panel-default">
+                        <div class="panel-heading">DriveHome.com</div>
+                        <div class="panel-body">
+                            <center>
+                                <img border="0" src="images/DriveHome.jpg" rel="preload" width="200" height="161">
+                            </center>
+                        </div>
+                    </div>
+                </div>
+                <div id="contactuspage" class="maincontent hidden">
+                    <link rel="canonical" href="http://NorthTexasWebsiteDesign.com/ContactUs">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">Contact Us</div>
+                        <div class="panel-body">
+                            <form>
+                                <div class="form-group">
+                                    <input type="text" id="nameText" class="form-control" value="" required />
+                                    <label class="form-control-placeholder" for="nameText">Name</label>
+                                </div>
+                                <div class="form-group">
+                                    <input type="text" id="emailText" class="form-control" value="" required />
+                                    <label class="form-control-placeholder" for="emailText">Email</label>
+                                </div>
+                                <div class="form-group">
+                                    <input type="text" id="phoneText" class="form-control" value="" required />
+                                    <label class="form-control-placeholder" for="phoneText">Phone</label>
+                                </div>
+                                <div class="form-group">
+                                    <input type="text" id="subjectText" class="form-control" value="" required />
+                                    <label class="form-control-placeholder" for="subjectText">Subject</label>
+                                </div>
+                                <div class="form-group">
+                                    <textarea rows="5" id="bodyTextArea" class="form-control" required></textarea>
+                                    <label class="form-control-placeholder" for="bodyTextArea">Message</label>
+                                </div>
+                                <input type="hidden" value="Send" name="sendButton" />
+                                <center>
+                                    <button type="submit" class="btn btn-primary pull-right" onclick="sendMail();">Send</button>
+                                </center>
+                            </form>
+                            <table border="0" cellspacing="0" cellpadding="0" class="darktext">
+                                <tr>
+                                    <td colspan="2" align="right"></td>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+                <div id="advancedservicespage" class="maincontentmobile hidden">
+                    <link rel="canonical" href="http://NorthTexasWebsiteDesign.com/AdvancedServices">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">Advanced Services</div>
+                        <div class="panel-body">
+                            <table border="0" width="100%" cellspacing="0" cellpadding="0" class="darktext">
+                                <tr height="10"><td colspan="2"></td></tr>
+                                <tr>
+                                    <td colspan="2" width="900">
+                                        Email Services
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td width="450">
+                                        <ul>
+                                            <li>Mail Server Solutions</li>
+                                            <li>Mailing List Management</li>
+                                            <li>Email Spam Filtering</li>
+                                        </ul>
+                                    </td>
+                                    <td width="450">
+                                        <ul>
+                                            <li>Email Virus Filtering</li>
+                                            <li>Email Configuration</li>
+                                            <li>User Setup/Support</li>
+                                        </ul>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td colspan="2">
+                                        Database Services
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <ul>
+                                            <li>Database Design</li>
+                                            <li>Database Administration </li>
+                                            <li>Database Tuning</li>
+                                        </ul>
+                                    </td>
+                                    <td>
+                                        <ul>
+                                            <li>Database Backups</li>
+                                            <li>Database Restores</li>
+                                            <li>Database Migrations</li>
+                                        </ul>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td colspan="2">
+                                        Hardware Services
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <ul>
+                                            <li>Hardware Services </li>
+                                            <li>Custom Built Computers</li>
+                                            <li>Custom Built Servers</li>
+                                            <li>Laptop Support &amp; Service</li>
+                                        </ul>
+                                    </td>
+                                    <td valign="top">
+                                        <ul>
+                                            <li>System Upgrades</li>
+                                            <li>Hard Drive Upgrades</li>
+                                            <li>Memory Upgrades </li>
+                                        </ul>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td colspan="2">
+                                        Data Backup Services
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <ul>
+                                            <li>Automated Backups</li>
+                                            <li>Offsite Data Storage</li>
+                                            <li>Storage Area Networks</li>
+                                            <li>Disaster Recovery Plan</li>
+                                            <li>Data Backup Restoration</li>
+                                        </ul>
+                                    </td>
+                                    <td valign="top">
+                                        <ul>
+                                            <li>NAS</li>
+                                            <li>Continuity Planning</li>
+                                            <li>Data Redundancy</li>
+                                            <li>RAID Storage</li>
+                                        </ul>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td colspan="2">
+                                        Security Services
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <ul>
+                                            <li>Hotfix/Patch Installations</li>
+                                            <li>Internet Security</li>
+                                            <li>Internal Network Security</li>
+                                            <li>Anti-Virus Protection</li>
+                                            <li>Intrusion Detection </li>
+                                            <li>Security Services</li>
+                                            <li>Network Monitoring</li>
+                                        </ul>
+                                    </td>
+                                    <td valign="top">
+                                        <ul>
+                                            <li>Penetration Testing</li>
+                                            <li>Acceptable Use</li>
+                                            <li>Firewall Security</li>
+                                            <li>Spyware/Adware</li>
+                                            <li>Network Audits</li>
+                                            <li>Integrity Checks</li>
+                                        </ul>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td colspan=2>
+                                        Server Services
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <ul>
+                                            <li>Microsoft IIS Server</li>
+                                            <li>Microsoft SQL Server</li>
+                                            <li>Application Server</li>
+                                            <li>Microsoft Exchange</li>
+                                            <li>Small Business Server</li>
+                                            <li>Server Services </li>
+                                            <li>Windows 2000 Server</li>
+                                            <li>Windows NT Server</li>
+                                        </ul>
+                                    </td>
+                                    <td>
+                                        <ul>
+                                            <li>DNS Server</li>
+                                            <li>File and Print Server</li>
+                                            <li>Linux Server</li>
+                                            <li>RAS/VPN</li>
+                                            <li>Novel Server</li>
+                                            <li>IBM Server</li>
+                                            <li>Web Server</li>
+                                            <li>Terminal Server</li>
+                                        </ul>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td colspan=2>
+                                        Desktop Computer Services
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <ul>
+                                            <li>Software Install/Config</li>
+                                            <li>Virus/Spyware Removal</li>
+                                            <li>PC Troubleshooting</li>
+                                            <li>OS Installation/Rebuild</li>
+                                            <li>New Computer Set Up</li>
+                                            <li>File and Printer Sharing </li>
+                                            <li>Email/Internet Set Up</li>
+                                            <li>PC Diagnostic Testing</li>
+                                            <li>Remote Support</li>
+                                        </ul>
+                                    </td>
+                                    <td>
+                                        <ul>
+                                            <li>Computer Upgrades</li>
+                                            <li>Desktop Configuration</li>
+                                            <li>Routine Maintenance </li>
+                                            <li>General Tech Support</li>
+                                            <li>New User Set Up</li>
+                                            <li>New Peripheral Setup</li>
+                                            <li>User Training</li>
+                                            <li>Performance Tune-Up </li>
+                                            <li>New Printer Set Up</li>
+                                        </ul>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td colspan=2>
+                                        Network &amp; Internet Services
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <ul>
+                                            <li>Network Configuration</li>
+                                            <li>Windows Active Directory</li>
+                                            <li>Wireless Networks</li>
+                                            <li>Wiring &amp; Cabling</li>
+                                            <li>Patch Panel Installs </li>
+                                            <li>Telecommunications</li>
+                                            <li>Log-on Scripts</li>
+                                            <li>Network Relocation</li>
+                                            <li>UPS Backup Power</li>
+                                            <li>Video Surveillance</li>
+                                        </ul>
+                                    </td>
+                                    <td>
+                                        <ul>
+                                            <li>Routers &amp; Switches</li>
+                                            <li>Troubleshooting</li>
+                                            <li>VoIP Solutions</li>
+                                            <li>LAN / WAN</li>
+                                            <li>Architecture Design </li>
+                                            <li>T1, DSL, Frame Relay</li>
+                                            <li>Maintenance</li>
+                                            <li>System Upgrades</li>
+                                            <li>Internet Connectivity</li>
+                                            <li>Layer 3 Switching</li>
+                                        </ul>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td colspan=2>
+                                        Web &amp; eBusiness Services
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <ul>
+                                            <li>Website Design</li>
+                                            <li>Website Hosting</li>
+                                            <li>Email Hosting</li>
+                                            <li>DNS Hosting</li>
+                                            <li>Domain Registration</li>
+                                            <li>Website Promotion</li>
+                                            <li>Internet Advertising</li>
+                                            <li>Usability Analysis</li>
+                                            <li>Customer Surveys </li>
+                                            <li>SSL Certificates </li>
+                                            <li>PHP, ASP, XML, JAVA</li>
+                                        </ul>
+                                    </td>
+                                    <td valign="top">
+                                        <ul>
+                                            <li>Website Support</li>
+                                            <li>Content Development </li>
+                                            <li>Database Integration</li>
+                                            <li>SEO Marketing</li>
+                                            <li>eBusiness Strategy </li>
+                                            <li>Shopping Carts</li>
+                                            <li>Flash Design</li>
+                                            <li>Custom Websites</li>
+                                            <li>Intranet Design</li>
+                                            <li>Content Management</li>
+                                        </ul>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td colspan="2">
+                                        Other IT Services
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <ul>
+                                            <li>Multi-Tiered Environments</li>
+                                            <li>IT Consultants</li>
+                                            <li>Project Outsourcing</li>
+                                            <li>IT Compliance Audits </li>
+                                            <li>Software Licensing</li>
+                                            <li>Network Diagrams</li>
+                                            <li>Network Architecture</li>
+                                            <li>Infrastructure Analysis</li>
+                                            <li>Network Redesign </li>
+                                            <li>Data Center Solutions</li>
+                                            <li>Legacy System Support </li>
+                                            <li>Hardware Procurement </li>
+                                            <li>Technical Advice</li>
+                                            <li>Platform Specialists </li>
+                                        </ul>
+                                    </td>
+                                    <td valign="top">
+                                        <ul>
+                                            <li>IT Asset Management </li>
+                                            <li>Advanced Config</li>
+                                            <li>Fault Tolerance</li>
+                                            <li>Network Performance</li>
+                                            <li>Software Development</li>
+                                            <li>Vendor Management</li>
+                                            <li>Contract Negotiations</li>
+                                            <li>IT Policies</li>
+                                            <li>Office Relocations </li>
+                                            <li>Tech Support</li>
+                                            <li>Data Migrations</li>
+                                            <li>Troubleshooting </li>
+                                            <li>Specialized Training</li>
+                                        </ul>
+                                    </td>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+                <form id="paynowForm" action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
+                    <input type="hidden" name="cmd" value="_xclick">
+                    <input type="hidden" name="item_name" value="Services Fee">
+                    <input type="hidden" name="business" value="jess@jesseasley.com">
+                    <input type="hidden" id="amount" name="amount" value="1.00">
+                    <input type="hidden" name="item_number" value="">
+                    <input type="hidden" name="currency_code" value="USD">
+                    <input type="hidden" name="charset" value="UTF-8">
+                    <input type="hidden" name="hosted_button_id" value="S5JJ9UJMR8JT4">
+                </form>
+</body>
+
+</html>
+

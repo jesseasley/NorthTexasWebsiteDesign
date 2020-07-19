@@ -1,0 +1,95 @@
+﻿<!DOCTYPE html>
+
+<html>
+
+<head>
+    <meta name="msvalidate.01" content="9F38F692B49A4874EC43FAEFDBA15FC5" />
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"
+            integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+            crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
+    <link rel="icon" href="favicon.ico" type="image/x-icon" />
+    <meta name="robots" content="index,follow" />
+    <meta name="keywords" content="website, design, consulting, it, web design, technology, application, websites, applications, designs" />
+    <script type="text/javascript">
+        function showSite(width, height) {
+            adjwidth = parseInt(width) + 17;
+            //alert(adjwidth);
+            time = new Date().getTime();
+            html = "<iframe src='" + $("#site").val() + "?ignore=" + time + "' frameborder='1' height='" + height + "px' width='" + adjwidth + "px' ></iframe>";
+            $("#myframe").html(html);
+            //alert($("#myframe").html());
+            //iframe.contentWindow.location.reload(true);
+        }
+        function resizeIframe() {
+            obj = document.getElementById("myframe");
+            obj.style.height = obj.contentWindow.document.body.scrollHeight + 'px';
+            alert("here");
+        }
+    </script>
+</head>
+<!--
+    bootstrap size limits
+    sm > 576px
+    md > 768px
+    lg > 992px
+    xl > 1200px
+-->
+
+    <body topmargin="0" bottommargin="0" leftmargin="0" rightmargin="0" onload="showSite('320', '568');">
+            <div class="row">
+                <div class="col-lg-1"></div>
+                <div class="col-lg-1">
+                    Site address:
+                </div>
+                <div class="col-lg-9">
+                    <input type="text" class="form-control" placeholder="Site address"
+                            id="site" value="http://localhost/northtexaswebsitedesign.com/template/#home" /><br />
+                </div>
+                <div class="col-lg-1"></div>
+            </div>
+            <div class="row">
+                <div class="col-lg-1"></div>
+                <div class="col-lg-2">
+                    iPhone 4 and 5 phones<br />
+                    <a class="btn btn-primary" href="#" onclick="showSite('320', '568');">Portrait 320x568</a><br />
+                    <a class="btn btn-primary" href="#" onclick="showSite('568', '320');">Landscape 568x320</a><br />
+                    Android phone<br />
+                    <a class="btn btn-primary" href="#" onclick="showSite('360', '640');">Portrait 360x640</a><br />
+                    <a class="btn btn-primary" href="#" onclick="showSite('640', '360');">Landscape 640x360</a><br />
+                    iPhone 6 phone<br />
+                    <a class="btn btn-primary" href="#" onclick="showSite('375', '667');">Portrait 375x667</a><br />
+                    <a class="btn btn-primary" href="#" onclick="showSite('667', '375');">Landscape 667x375</a><br />
+                    iPhone 6+ phone<br />
+                    <a class="btn btn-primary" href="#" onclick="showSite('414', '736');">Portrait 414x736</a><br />
+                    <a class="btn btn-primary" href="#" onclick="showSite('736', '414');">Landscape 736x414</a><br />
+                    iPad tablet<br />
+                    <a class="btn btn-primary" href="#" onclick="showSite('768', '1024');">Portrait 768x1024</a><br />
+                    <a class="btn btn-primary" href="#" onclick="showSite('1024', '768');">Landscape 1024x768</a><br />
+                    Android tablet<br />
+                    <a class="btn btn-primary" href="#" onclick="showSite('800', '1280');">Portrait 800x1280</a><br />
+                    <a class="btn btn-primary" href="#" onclick="showSite('1280', '800');">Landscape 1280x800</a><br />
+                    Standard Monitors<br />
+                    <a class="btn btn-primary" href="#" onclick="showSite('1024', '1280');">Portrait 1024x1280</a><br />
+                    <a class="btn btn-primary" href="#" onclick="showSite('1050', '1680');">Portrait 1050x1680</a><br />
+                    <a class="btn btn-primary" href="#" onclick="showSite('1080', '1920');">Portrait 1080x1920</a><br />
+                    <a class="btn btn-primary" href="#" onclick="showSite('1200', '1600');">Portrait 1200x1600</a><br />
+                    <a class="btn btn-primary" href="#" onclick="showSite('1200', '1920');">Portrait 1200x1920</a><br />
+                    <br />
+                </div>
+                <div class="col-lg-8">
+                    <br />
+                    <div id="myframe"></div>
+                    <br />
+                </div>
+                <div class="col-lg-1"></div>
+            </div>
+
+    </body>
+</html>
+

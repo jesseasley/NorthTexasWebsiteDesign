@@ -1,0 +1,129 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Grids</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="https://code.jquery.com/ui/1.11.1/jquery-ui.js"></script>
+    <link rel="stylesheet" href="https://code.jquery.com/jquery-ui.css">
+    <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+    <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
+    <link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css" />
+    <style>
+        .content div div p {
+            background-color: lightGray;
+            border: 1px solid gray;
+            height: 75px;
+            margin: 0;
+        }
+    </style>
+</head>
+<body>
+    <section id="page" data-role="page">
+        <header data-role="header" data-position="fixed">
+            <h1>Header</h1>
+        </header>
+        <div class="content" class="ui-content">
+            <p>Two-column layout:</p>
+            <div class="ui-grid-a">
+                <div class="ui-block-a"><p>This is block A</p></div>
+                <div class="ui-block-b"><p>This is block B</p></div>
+            </div>
+        </div>
+        <div class="content" class="ui-content">
+            <p>Three-column layout:</p>
+            <div class="ui-grid-b">
+                <div class="ui-block-a"><p>This is block A</p></div>
+                <div class="ui-block-b"><p>This is block B</p></div>
+                <div class="ui-block-c"><p>This is block C</p></div>
+            </div>
+        </div>
+        <div class="content" class="ui-content">
+            <p>Four-column layout:</p>
+            <div class="ui-grid-c">
+                <div class="ui-block-a"><p>This is block A</p></div>
+                <div class="ui-block-b"><p>This is block B</p></div>
+                <div class="ui-block-c"><p>This is block C</p></div>
+                <div class="ui-block-d"><p>This is block D</p></div>
+            </div>
+        </div>
+        <div class="content" class="ui-content">
+            <p>Five-column layout:</p>
+            <div class="ui-grid-d">
+                <div class="ui-block-a"><p>This is block A</p></div>
+                <div class="ui-block-b"><p>This is block B</p></div>
+                <div class="ui-block-c"><p>This is block C</p></div>
+                <div class="ui-block-d"><p>This is block D</p></div>
+                <div class="ui-block-e"><p>This is block E</p></div>
+            </div>
+        </div>
+        <div class="content" class="ui-content">
+            <p>Three-column layout, multiple rows:</p>
+            <div class="ui-grid-b">
+                <div class="ui-block-a"><p>This is block A</p></div>
+                <div class="ui-block-b"><p>This is block B</p></div>
+                <div class="ui-block-c"><p>This is block C</p></div>
+                <div class="ui-block-a"><p>This is block A</p></div>
+                <div class="ui-block-b"><p>This is block B</p></div>
+                <div class="ui-block-c"><p>This is block C</p></div>
+            </div>
+        </div>
+        <form method="get" action="">
+            <fieldset class="ui-grid-b">
+                <legend>Catastrophic Failure! Action?</legend>
+                <div class="ui-block-a"><button>Abort</button></div>
+                <div class="ui-block-b"><button>Retry</button></div>
+                <div class="ui-block-c"><button>Ignore</button></div>
+            </fieldset>
+        </form>
+        <div class="ui-content">
+            <p>Collapsible block:</p>
+            <div data-role="collapsible">
+                <h1>I'm a collapsible block</h1>
+                <p>I'm the content in the collapsible block.</p>
+            </div>
+
+            <p>Defaults to open:</p>
+            <div data-role="collapsible" data-collapsed="false">
+                <h1>I'm a collapsible block</h1>
+                <p>I'm the content in the collapsible block.</p>
+            </div>
+
+            <p>Nested Collapsible blocks:</p>
+            <div data-role="collapsible">
+                <h1>I'm a collapsible block</h1>
+                <p>I'm the content in the collapsible block.</p>
+                <div data-role="collapsible">
+                    <h1>I'm a nested collapsible block</h1>
+                    <p>I'm the content in the nested collapsible block.</p>
+                </div>
+            </div>
+        </div>
+        <div class="ui-content">
+            <p>Collapsible set with 4 sections:</p>
+            <div data-role="collapsible-set">
+                <div data-role="collapsible" data-collapsed="false">
+                    <h1>Section 1</h1>
+                    <p>I'm the content in section 1.</p>
+                </div>
+                <div data-role="collapsible">
+                    <h1>Section 2</h1>
+                    <p>I'm the content in section 2.</p>
+                </div>
+                <div data-role="collapsible">
+                    <h1>Section 3</h1>
+                    <p>I'm the content in section 3.</p>
+                </div>
+                <div data-role="collapsible">
+                    <h1>Section 4</h1>
+                    <p>I'm the content in section 4.</p>
+                </div>
+            </div>
+        </div>
+
+    </section>
+</body>
+</html>

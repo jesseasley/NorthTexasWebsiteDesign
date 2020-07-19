@@ -1,0 +1,62 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Tabs Example</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="//code.jquery.com/jquery-ui.css">
+    <link href="https://fonts.googleapis.com/css?family=Indie+Flower" rel="stylesheet">
+    <script src="//code.jquery.com/jquery-1.10.2.js"></script>
+    <script src="//code.jquery.com/ui/1.11.1/jquery-ui.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <style>
+        .Indie{
+            font-family: 'Indie Flower', cursive;;
+        }
+    </style>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script>
+        //class doc {
+        //    //m_loc = "";
+        //    loc(myLoc) {
+        //        m_loc = "test1";
+        //    }
+        //    loc() {
+        //        alert("fetch");
+        //        return m_loc;
+        //    }
+        //}
+        $(document).ready(function () {
+            //var d = new doc;
+            //d.loc = "test";
+            //alert(d.loc);
+        });
+    </script>
+</head>
+<body>
+    <div class="container">
+        <br />
+        <ul class="nav nav-tabs">
+            <li class="active"><a data-toggle="tab" href="#home">Home</a></li>
+            <li><a data-toggle="tab" href="#menu1">Menu 1</a></li>
+            <li><a data-toggle="tab" href="#bstp">Bootstrap Tabs Page</a></li>
+        </ul>
+
+        <div class="tab-content">
+            <div id="home" class="tab-pane fade in active">
+                <h3>HOME</h3>
+                <p>Some content.</p>
+            </div>
+            <div id="menu1" class="tab-pane fade">
+                <h3>Menu 1</h3>
+                <p>Some content in menu 1.</p>
+            </div>
+            <div id="bstp" class="tab-pane fade Indie">
+                <h3>Bootstrap Tabs Page</h3>
+                <p><a href="https://www.w3schools.com/bootstrap/bootstrap_tabs_pills.asp" target="_blank">
+                    Click here to go to the Bootstrap Tab page</a></p>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
